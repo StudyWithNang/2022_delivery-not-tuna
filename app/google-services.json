@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "455626487465",
+    "project_id": "dnt1-dc2d4",
+    "storage_bucket": "dnt1-dc2d4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:455626487465:android:b84642e0061ee5b1101bb8",
+        "android_client_info": {
+          "package_name": "com.example.dnt"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "455626487465-22aqjio4r89u8gh5p64q8ku3k071pfh5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKYSkmxmcpRLvXxyY701ldY45e5YjtoNY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "455626487465-22aqjio4r89u8gh5p64q8ku3k071pfh5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
