@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -105,4 +106,114 @@
         android:layout_marginTop="10dp"
         android:background="@drawable/textview_bottom_border"
         ></TextView>
+=======
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    tools:context=".LoginActivity">
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:id="@+id/imageview"
+        android:src="@drawable/app_logo_white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        ></ImageView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="50dp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="이메일"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="70dp"
+            ></TextView>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:hint="이메일을 입력해 주세요"
+            android:textSize="14dp"
+            android:background="@drawable/edittext_border"
+            android:id="@+id/login_email"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="5dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="70dp"
+            ></EditText>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="비밀번호"
+            android:textSize="14dp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="70dp"
+            ></TextView>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:hint="비밀번호를 입력해 주세요"
+            android:textSize="14dp"
+            android:background="@drawable/edittext_border"
+            android:inputType="textPassword"
+            android:id="@+id/login_password"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="5dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginRight="70dp"
+            ></EditText>
+    </LinearLayout>
+
+
+    <Button
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:backgroundTint="#ff6565"
+        android:text="로그인"
+        android:id="@+id/login_btn"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:layout_marginTop="40dp"
+        ></Button>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sign_up"
+        android:text="회원가입"
+        android:textColor="#ff6565"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/textview_bottom_border"
+        ></TextView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="비밀번호를 잊어버렸어요"
+        android:id="@+id/find"
+        android:textColor="#ff6565"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/textview_bottom_border"
+        ></TextView>
+>>>>>>> 8623fedf2ecc0afccd34ae6b781edc638df1ad0f
 </LinearLayout>
