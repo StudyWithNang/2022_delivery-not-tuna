@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.dnt">
+    package="com.example.dnt" >
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -14,20 +14,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DNT"
-        tools:targetApi="31">
+        tools:targetApi="31"
+        android:usesCleartextTraffic="true">
+<!--        <activity android:name=".backward"-->
+<!--            android:parentActivityName=".MainActivity"-->
+<!--            />-->
         <activity
             android:name=".SignUpActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".MainActivity"
-            tools:ignore="Instantiatable" />
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".AddPostActivity"></activity>
     </application>
 
 </manifest>

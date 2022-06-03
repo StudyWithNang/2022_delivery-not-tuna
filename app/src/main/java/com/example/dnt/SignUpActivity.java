@@ -3,6 +3,7 @@ package com.example.dnt;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -33,10 +34,24 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         signup_email = findViewById(R.id.signup_email);
         signup_nickname = findViewById(R.id.signup_nickname);
         signup_password = findViewById(R.id.signup_password);
         signup_btn = findViewById(R.id.signup_btn);
+
+
+        //회원가입 완료후 뒤로 버튼 누르면 다시 로그인 화면으로
+        Button signup_back = (Button) findViewById(R.id.signup_back_btn);
+        signup_back.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
 
         //firebase 정의
         mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -60,6 +75,7 @@ public class SignUpActivity extends AppCompatActivity {
                 userId++;
             }
         });
+
     }
 
     private void writeNewUser(int userId, String email, String name, String pw) {
