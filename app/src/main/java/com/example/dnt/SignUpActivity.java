@@ -23,7 +23,7 @@ import java.util.HashMap;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    EditText signup_email, signup_nickname, signup_password;
+    EditText signup_email, signup_nickname, signup_password, signup_password_chk;
     Button signup_btn;
     int userId = 1;
 
@@ -39,7 +39,9 @@ public class SignUpActivity extends AppCompatActivity {
         signup_email = findViewById(R.id.signup_email);
         signup_nickname = findViewById(R.id.signup_nickname);
         signup_password = findViewById(R.id.signup_password);
+        signup_password_chk = findViewById(R.id.signup_password_chk);
         signup_btn = findViewById(R.id.signup_btn);
+
 
 
         //회원가입 완료후 뒤로 버튼 누르면 다시 로그인 화면으로
@@ -64,15 +66,24 @@ public class SignUpActivity extends AppCompatActivity {
                 String getUserEmail = signup_email.getText().toString();
                 String getUserName = signup_nickname.getText().toString();
                 String getUserPW = signup_password.getText().toString();
+                String getUserPW_chk = signup_password_chk.getText().toString();
 
-                //hashmap 만들기
-                HashMap result = new HashMap<>();
-                result.put("email", getUserEmail);
-                result.put("nickname", getUserName);
-                result.put("password", getUserPW);
+                // 비밀번호 입력란과 비밀번호 확인란이 일치하는지 검증
+                if(getUserPW.equals(getUserPW_chk))
+                {
+                    //hashmap 만들기
+                    HashMap result = new HashMap<>();
+                    result.put("email", getUserEmail);
+                    result.put("nickname", getUserName);
+                    result.put("password", getUserPW);
 
-                writeNewUser(userId, getUserEmail, getUserName, getUserPW);
-                userId++;
+                    writeNewUser(userId, getUserEmail, getUserName, getUserPW);
+                    userId++;
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(), "비밀번호가 다릅니다.",Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -105,7 +116,7 @@ public class SignUpActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 // Get Post object and use the values to update the UI
                 if(dataSnapshot.getValue(UserInfo.class) != null){
-                    UserInfo post = dataSnapshot.getValue(UserInfo.class);
+                    UserInfo userInfo = dataSnapshot.getValue(UserInfo.class);
                     //Log.w("FireBaseData", "getData" + post.toString());
                 } else {
                     Toast.makeText(SignUpActivity.this, "데이터 없음...", Toast.LENGTH_SHORT).show();
