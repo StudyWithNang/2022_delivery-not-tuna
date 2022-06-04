@@ -2,6 +2,8 @@ package com.example.dnt;
 
 
 import android.content.Context;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -26,16 +28,20 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
     @Override
     // 실제 리스트뷰가 어뎁터에 연결된 다음에 뷰 홀더를 최초로 만들어낸다.
     public PostViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.post_item, parent, false);
+        PostViewHolder holder = new PostViewHolder(view);
+        return holder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull PostViewHolder holder, int position) {
+        Log.e("arrayList", arrayList.get(position).getRestaurant());
         holder.restaurant_name.setText(arrayList.get(position).getRestaurant());
         holder.deadline_HH.setText(arrayList.get(position).getDeadline_HH());
         holder.deadline_mm.setText(arrayList.get(position).getDeadline_mm());
         holder.pickup.setText(arrayList.get(position).getPickup());
         holder.errand_price.setText(arrayList.get(position).getPrice());
+        holder.errand_description.setText(arrayList.get(position).getDescription());
 
     }
 
@@ -50,11 +56,14 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
         public PostViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.restaurant_name = itemView.findViewById(R.id.restaurant_name);
-            this.deadline_HH = itemView.findViewById(R.id.deadline_HH);
-            this.deadline_mm = itemView.findViewById(R.id.deadline_mm);
-            this.pickup = itemView.findViewById(R.id.pickup);
-            this.errand_description = itemView.findViewById(R.id.errand_description);
+            Log.e("111", ((TextView) itemView.findViewById(R.id.restaurant_name)).toString());
+            //itemView.setContentView(R.layout.);
+            this.restaurant_name = (TextView) itemView.findViewById(R.id.restaurant_name);
+            this.deadline_HH = (TextView) itemView.findViewById(R.id.deadline_HH);
+            this.deadline_mm = (TextView) itemView.findViewById(R.id.deadline_mm);
+            this.pickup = (TextView) itemView.findViewById(R.id.pickup);
+            this.errand_description = (TextView) itemView.findViewById(R.id.errand_description);
+            this.errand_price = (TextView) itemView.findViewById(R.id.errand_price);
         }
     }
 

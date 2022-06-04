@@ -18,10 +18,11 @@ import com.google.firebase.database.ValueEventListener;
 
 import com.example.dnt.AddPostActivity;
 import com.example.dnt.R;
+import com.example.dnt.PostAdapter;
 //import com.example.dnt.ImageViewPagerAdapter;
 //import com.example.dnt.RecyclerAdapter;
 //import com.example.dnt.SearchActivity;
-import com.example.dnt.PostInfo; //부름부름에서 posts class 따로 있음 왜 두개일까?
+import com.example.dnt.PostInfo;
 
 import java.util.ArrayList;
 
@@ -50,6 +51,7 @@ public class homeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home, container, false);
         swipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout);
+
         recyclerView = (RecyclerView) view.findViewById(R.id.homeRecyclerView);
         recyclerView.setHasFixedSize(true); // 리사이클러뷰 기존성능 강화
         layoutManager = new LinearLayoutManager(getContext());
@@ -57,7 +59,9 @@ public class homeFragment extends Fragment {
         arrayList = new ArrayList<>(); // User 객체를 담을 어레이 리스트 (어댑터쪽으로)
 
         database = FirebaseDatabase.getInstance(); // 파이어베이스 데이터베이스 연동
-        databaseReference = database.getReference("Posts"); // DB 테이블 연결.....???????????
+        databaseReference = database.getReference("posts"); // DB 테이블 연결
+
+
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -76,7 +80,6 @@ public class homeFragment extends Fragment {
                 Log.e("homeFragment", String.valueOf(databaseError.toException())); // 에러문 출력
             }
         });
-
         adapter = new PostAdapter(arrayList, getContext());
         recyclerView.setAdapter(adapter); // 리사이클러뷰에 어댑터 연결
 
