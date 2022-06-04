@@ -73,16 +73,15 @@
 
 
     <Button
+        android:id="@+id/login_btn"
         android:layout_width="180dp"
         android:layout_height="40dp"
+        android:layout_marginTop="40dp"
         android:backgroundTint="#ff6565"
         android:text="로그인"
-        android:id="@+id/login_btn"
-        android:textSize="15sp"
-        android:textStyle="bold"
         android:textColor="@color/white"
-        android:layout_marginTop="40dp"
-        ></Button>
+        android:textSize="15sp"
+        android:textStyle="bold"></Button>
 
     <TextView
         android:layout_width="wrap_content"
