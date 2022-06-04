@@ -11,8 +11,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -24,7 +26,7 @@ import java.util.HashMap;
 public class SignUpActivity extends AppCompatActivity {
 
     EditText signup_email, signup_nickname, signup_password;
-    Button signup_btn;
+    Button signup_btn, check_btn;
     int userId = 1;
 
     private DatabaseReference mDatabase;
@@ -40,6 +42,7 @@ public class SignUpActivity extends AppCompatActivity {
         signup_nickname = findViewById(R.id.signup_nickname);
         signup_password = findViewById(R.id.signup_password);
         signup_btn = findViewById(R.id.signup_btn);
+        check_btn = findViewById(R.id.check_btn);
 
 
         //회원가입 완료후 뒤로 버튼 누르면 다시 로그인 화면으로
@@ -76,6 +79,14 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
+        check_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                readUser();
+            }
+        });
+
+
     }
 
     private void writeNewUser(int userId, String email, String name, String pw) {
@@ -105,8 +116,8 @@ public class SignUpActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 // Get Post object and use the values to update the UI
                 if(dataSnapshot.getValue(UserInfo.class) != null){
-                    UserInfo post = dataSnapshot.getValue(UserInfo.class);
-                    //Log.w("FireBaseData", "getData" + post.toString());
+                    UserInfo userInfo = dataSnapshot.getValue(UserInfo.class);
+                    Log.w("FireBaseData", "getData" + userInfo.toString());
                 } else {
                     Toast.makeText(SignUpActivity.this, "데이터 없음...", Toast.LENGTH_SHORT).show();
                 }
@@ -116,6 +127,20 @@ public class SignUpActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
                 // Getting Post failed, log a message
                 Log.w("FireBaseData", "loadPost:onCancelled", databaseError.toException());
+            }
+        });
+    }
+
+    private void readUser2(int userId){
+        mDatabase.child("users").child(String.valueOf(userId)).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+                }
+                else {
+                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
+                }
             }
         });
     }

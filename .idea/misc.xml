@@ -11,16 +11,22 @@
         <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/layout/activity_main.xml" value="0.18229166666666666" />
         <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
         <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/layout/activity_signup.xml" value="0.1" />
+        <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/drawable/ic_baseline_add_circle_60.xml" value="0.13" />
         <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.2405" />
-        <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/layout/activity_addpost.xml" value="0.33" />
+        <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.1" />
+        <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/drawable/menu_selector_color.xml" value="0.1" />
+        <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/drawable/textview_bottom_border.xml" value="0.1" />
+        <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/layout/activity_addpost.xml" value="0.13218390804597702" />
         <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/layout/activity_backward.xml" value="0.23233695652173914" />
         <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/layout/activity_detail.xml" value="0.27219202898550726" />
         <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/layout/activity_list.xml" value="0.27219202898550726" />
         <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/layout/activity_login.xml" value="0.22" />
-        <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/layout/activity_main.xml" value="0.2767210144927536" />
-        <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/layout/activity_signup.xml" value="0.25" />
+        <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/layout/activity_signup.xml" value="0.22" />
         <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/layout/custom_comment.xml" value="0.2786458333333333" />
-        <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/layout/fragment_home.xml" value="0.2786458333333333" />
+        <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/layout/frag_like.xml" value="0.19230769230769232" />
+        <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/layout/fragment_home.xml" value="0.33" />
+        <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/layout/postlist_item.xml" value="0.1" />
       </map>
     </option>
   </component>

@@ -1,5 +1,9 @@
 package com.example.dnt;
+import com.google.firebase.database.Exclude;
 import com.google.firebase.database.IgnoreExtraProperties;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @IgnoreExtraProperties
 public class PostInfo {
@@ -22,6 +26,7 @@ public class PostInfo {
         this.description = description;
 
     }
+
 
     public String getRestaurant() {return restaurant;}
 
