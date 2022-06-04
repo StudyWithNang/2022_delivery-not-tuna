@@ -11,21 +11,28 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.json.JSONObject;
+
 import java.util.HashMap;
+import java.util.Map;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    EditText signup_email, signup_nickname, signup_password, signup_password_chk;
-    Button signup_btn;
-    int userId = 1;
+    EditText signup_email;
+    EditText signup_nickname;
+    EditText signup_password;
+    EditText signup_password_chk;
+    Button signup_btn, check_btn;
 
     private DatabaseReference mDatabase;
 
@@ -41,6 +48,7 @@ public class SignUpActivity extends AppCompatActivity {
         signup_password = findViewById(R.id.signup_password);
         signup_password_chk = findViewById(R.id.signup_password_chk);
         signup_btn = findViewById(R.id.signup_btn);
+        check_btn = findViewById(R.id.check_btn);
 
 
 
@@ -57,8 +65,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         //firebase 정의
         mDatabase = FirebaseDatabase.getInstance().getReference();
-
-        readUser();
+        readUser(signup_nickname.getText().toString());
 
         signup_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,8 +84,7 @@ public class SignUpActivity extends AppCompatActivity {
                     result.put("nickname", getUserName);
                     result.put("password", getUserPW);
 
-                    writeNewUser(userId, getUserEmail, getUserName, getUserPW);
-                    userId++;
+                    writeNewUser(getUserEmail, getUserName, getUserPW);
                 }
                 else
                 {
@@ -87,12 +93,29 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
+        check_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(SignUpActivity.this, "DB확인버튼", Toast.LENGTH_SHORT).show();
+                ViewController(signup_nickname.getText().toString());
+                readUser(signup_nickname.getText().toString());
+            }
+        });
+
+
     }
 
-    private void writeNewUser(int userId, String email, String name, String pw) {
-        UserInfo user = new UserInfo(email, name, pw);
+    public void ViewController(String name){
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("email", "babo");
+        mDatabase.child("users").child(String.valueOf(name)).updateChildren(map);
+    }
 
-        mDatabase.child("users").child(String.valueOf(userId)).setValue(user) //db에 순차적으로 users - 1 - email, name, pw 들어감
+
+    private void writeNewUser(String email, String name, String pw) {
+        UserInfo user = new UserInfo(email, pw);
+
+        mDatabase.child("users").child(String.valueOf(name)).setValue(user) //db에 순차적으로 users - 1 - email, name, pw 들어감
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
@@ -110,14 +133,14 @@ public class SignUpActivity extends AppCompatActivity {
 
     }
 
-    private void readUser(){
-        mDatabase.child("users").child("1").addValueEventListener(new ValueEventListener() {
+    private void readUser(String name){
+        mDatabase.child("users").child(name).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 // Get Post object and use the values to update the UI
                 if(dataSnapshot.getValue(UserInfo.class) != null){
                     UserInfo userInfo = dataSnapshot.getValue(UserInfo.class);
-                    //Log.w("FireBaseData", "getData" + post.toString());
+                    Log.w("FireBaseData", "getData" + userInfo.toString());
                 } else {
                     Toast.makeText(SignUpActivity.this, "데이터 없음...", Toast.LENGTH_SHORT).show();
                 }
@@ -130,4 +153,24 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
     }
-}
+
+    private void readUser2(){
+        mDatabase.child("users").child("1").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                // Get Post object and use the values to update the UI
+                if(dataSnapshot.getValue(UserInfo.class) != null){
+                    UserInfo userInfo = dataSnapshot.getValue(UserInfo.class);
+                    Log.w("FireBaseData", "getData" + userInfo.toString());
+                } else {
+                    Toast.makeText(SignUpActivity.this, "데이터 없음...", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w("FireBaseData", "loadPost:onCancelled", databaseError.toException());
+            }
+        });
+    }}

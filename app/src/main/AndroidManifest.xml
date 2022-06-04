@@ -20,7 +20,7 @@
 <!--            android:parentActivityName=".MainActivity"-->
 <!--            />-->
         <activity
-            android:name=".SignUpActivity"
+            android:name=".LoginActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,8 +29,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity"></activity>
-        <activity android:name=".LoginActivity"></activity>
+<!--        <activity android:name=".LoginActivity"></activity>-->
+        <activity android:name=".SignUpActivity"></activity>
         <activity android:name=".AddPostActivity"></activity>
+        <activity android:name=".ChangePwActivity"></activity>
     </application>
 
 </manifest>

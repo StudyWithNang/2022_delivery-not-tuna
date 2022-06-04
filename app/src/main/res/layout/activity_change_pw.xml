@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@color/white"
+    >
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="&lt; 비밀번호 변경 &gt;"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:layout_marginBottom="20dp"
+        ></TextView>
+
+    <LinearLayout
+        android:layout_width="287dp"
+        android:layout_height="362dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="닉네임"
+            android:textColor="@color/black"
+            android:textSize="14dp"
+            android:textStyle="bold"></TextView>
+
+        <EditText
+            android:id="@+id/nickname"
+            android:layout_width="280dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edittext_border"
+            android:hint="본인의 닉네임을 입력해 주세요"
+            android:inputType="textPassword"
+            android:paddingLeft="10dp"
+            android:textColor="@color/black"
+            android:textSize="14dp"></EditText>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="현재 비밀번호"
+            android:textColor="@color/black"
+            android:textSize="14dp"
+            android:textStyle="bold"></TextView>
+
+        <EditText
+            android:id="@+id/current_pwd"
+            android:layout_width="280dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edittext_border"
+            android:hint="현재 비밀번호를 입력해 주세요"
+            android:inputType="textPassword"
+            android:paddingLeft="10dp"
+            android:textColor="@color/black"
+            android:textSize="14dp"></EditText>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="새 비밀번호"
+            android:textColor="@color/black"
+            android:textSize="14dp"
+            android:textStyle="bold"></TextView>
+
+        <EditText
+            android:id="@+id/new_password"
+            android:layout_width="280dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edittext_border"
+            android:hint="새 비밀번호를 입력해 주세요"
+            android:inputType="textPassword"
+            android:paddingLeft="10dp"
+            android:textColor="@color/black"
+            android:textSize="14dp"></EditText>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="새 비밀번호 확인"
+            android:textColor="@color/black"
+            android:textSize="14dp"
+            android:textStyle="bold"></TextView>
+
+        <EditText
+            android:id="@+id/new_password_chk"
+            android:layout_width="280dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edittext_border"
+            android:hint="새 비밀번호를 입력해 주세요"
+            android:inputType="textPassword"
+            android:paddingLeft="10dp"
+            android:textColor="@color/black"
+            android:textSize="14dp"></EditText>
+
+        <Button
+            android:id="@+id/complete_change_pwd_btn"
+            android:layout_width="202dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="#ff6565"
+            android:text="변경하기"
+            android:textColor="@color/white"
+            android:textStyle="bold">
+
+        </Button>
+    </LinearLayout>
+</LinearLayout>

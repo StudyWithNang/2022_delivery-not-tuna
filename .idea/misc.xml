@@ -4,10 +4,12 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/drawable/edittext_border.xml" value="0.1945" />
+        <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/drawable/ic_baseline_add_circle_60.xml" value="0.1375" />
         <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.1955" />
         <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.1675" />
         <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/drawable/login_btn_bg.xml" value="0.1955" />
         <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/drawable/textview_bottom_border.xml" value="0.1945" />
+        <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/layout/activity_change_pw.xml" value="0.22" />
         <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/layout/activity_detail.xml" value="0.3148148148148148" />
         <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/layout/activity_list.xml" value="0.1" />
         <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/layout/activity_login.xml" value="0.18645833333333334" />
