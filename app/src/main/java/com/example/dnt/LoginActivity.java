@@ -12,66 +12,64 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class LoginActivity extends AppCompatActivity {
     Intent intent;
     EditText login_email, login_password;
+    Button login_btn;
+    TextView signup, change_pw;
+
+    private DatabaseReference mDatabase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
 
-<<<<<<< HEAD
-        Button login_btn = findViewById(R.id.login_btn);
-        TextView sign_up = findViewById(R.id.sign_up);
-//        TextView find = findViewById(R.id.find);
-
-        login_btn.setOnClickListener(OnClickListener);
-        sign_up.setOnClickListener(OnClickListener);
-//        find.setOnClickListener(onClickListener);
         login_email = findViewById(R.id.login_email);
         login_password = findViewById(R.id.login_password);
+        login_btn = findViewById(R.id.login_btn);
+        signup = findViewById(R.id.signup);
+        change_pw = findViewById(R.id.change_pw);
 
-    }
-=======
-        //로그인 버튼 -> list(home)
-        Button login_b = (Button) findViewById(R.id.login_btn);
-        login_b.setOnClickListener(new View.OnClickListener() {
->>>>>>> a817659d64414e2c1244ac0097d9fce6f635df99
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        //readUser();
 
-    View.OnClickListener OnClickListener = new View.OnClickListener() {
-        // do something when the button is clicked
-        // Yes we will handle click here but which button clicked??? We don't know
 
-        @Override
-        public void onClick(View v) {
-            switch(v.getId()){
-                case R.id.login_btn:
-                    intent = new Intent(getApplicationContext(),MainActivity.class);
-//                    intent = new Intent(getApplicationContext(),AddPostActivity.class);
-                    startActivity(intent);
-                    break;
-                case R.id.sign_up:
-                    intent = new Intent(getApplicationContext(),SignUpActivity.class);
-                    startActivity(intent);
-                    break;
-//                    case R.id.find:
-//                        intent = new Intent(getApplicationContext(), findPopup.class);
-//                        startActivity(intent);
-//                        break;
+        login_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String getUserEmail = login_email.getText().toString();
+                String getUserPW = login_password.getText().toString();
+
+                // db에서 검증 후
+
+                intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
             }
-        }
-    };
+        });
 
-<<<<<<< HEAD
+        signup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(getApplicationContext(), SignUpActivity.class);
+                startActivity(intent);
+            }
+        });
 
-=======
+        change_pw.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                intent = new Intent(getApplicationContext(), ChangePwActivity.class);
+                startActivity(intent);
+            }
+        };
+
     }
->>>>>>> a817659d64414e2c1244ac0097d9fce6f635df99
 }
-
-
-
-

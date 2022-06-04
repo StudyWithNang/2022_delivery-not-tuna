@@ -21,13 +21,18 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import org.json.JSONObject;
+
 import java.util.HashMap;
+import java.util.Map;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    EditText signup_email, signup_nickname, signup_password;
+    EditText signup_email;
+    EditText signup_nickname;
+    EditText signup_password;
+    EditText signup_password_chk;
     Button signup_btn, check_btn;
-    int userId = 1;
 
     private DatabaseReference mDatabase;
 
@@ -41,8 +46,10 @@ public class SignUpActivity extends AppCompatActivity {
         signup_email = findViewById(R.id.signup_email);
         signup_nickname = findViewById(R.id.signup_nickname);
         signup_password = findViewById(R.id.signup_password);
+        signup_password_chk = findViewById(R.id.signup_password_chk);
         signup_btn = findViewById(R.id.signup_btn);
         check_btn = findViewById(R.id.check_btn);
+
 
 
         //회원가입 완료후 뒤로 버튼 누르면 다시 로그인 화면으로
@@ -58,8 +65,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         //firebase 정의
         mDatabase = FirebaseDatabase.getInstance().getReference();
-
-        readUser();
+        readUser(signup_nickname.getText().toString());
 
         signup_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,32 +73,48 @@ public class SignUpActivity extends AppCompatActivity {
                 String getUserEmail = signup_email.getText().toString();
                 String getUserName = signup_nickname.getText().toString();
                 String getUserPW = signup_password.getText().toString();
+                String getUserPW_chk = signup_password_chk.getText().toString();
 
-                //hashmap 만들기
-                HashMap result = new HashMap<>();
-                result.put("email", getUserEmail);
-                result.put("nickname", getUserName);
-                result.put("password", getUserPW);
+                // 비밀번호 입력란과 비밀번호 확인란이 일치하는지 검증
+                if(getUserPW.equals(getUserPW_chk))
+                {
+                    //hashmap 만들기
+                    HashMap result = new HashMap<>();
+                    result.put("email", getUserEmail);
+                    result.put("nickname", getUserName);
+                    result.put("password", getUserPW);
 
-                writeNewUser(userId, getUserEmail, getUserName, getUserPW);
-                userId++;
+                    writeNewUser(getUserEmail, getUserName, getUserPW);
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(), "비밀번호가 다릅니다.",Toast.LENGTH_LONG).show();
+                }
             }
         });
 
         check_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                readUser();
+                Toast.makeText(SignUpActivity.this, "DB확인버튼", Toast.LENGTH_SHORT).show();
+                ViewController(signup_nickname.getText().toString());
+                readUser(signup_nickname.getText().toString());
             }
         });
 
-
     }
 
-    private void writeNewUser(int userId, String email, String name, String pw) {
-        UserInfo user = new UserInfo(email, name, pw);
+    public void ViewController(String name){
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("email", "babo");
+        mDatabase.child("users").child(String.valueOf(name)).updateChildren(map);
+    }
 
-        mDatabase.child("users").child(String.valueOf(userId)).setValue(user) //db에 순차적으로 users - 1 - email, name, pw 들어감
+
+    private void writeNewUser(String email, String name, String pw) {
+        UserInfo user = new UserInfo(email, pw);
+
+        mDatabase.child("users").child(String.valueOf(name)).setValue(user) //db에 순차적으로 users - 1 - email, name, pw 들어감
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
@@ -110,8 +132,8 @@ public class SignUpActivity extends AppCompatActivity {
 
     }
 
-    private void readUser(){
-        mDatabase.child("users").child("1").addValueEventListener(new ValueEventListener() {
+    private void readUser(String name){
+        mDatabase.child("users").child(name).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 // Get Post object and use the values to update the UI
@@ -131,17 +153,23 @@ public class SignUpActivity extends AppCompatActivity {
         });
     }
 
-    private void readUser2(int userId){
-        mDatabase.child("users").child(String.valueOf(userId)).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+    private void readUser2(){
+        mDatabase.child("users").child("1").addValueEventListener(new ValueEventListener() {
             @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (!task.isSuccessful()) {
-                    Log.e("firebase", "Error getting data", task.getException());
-                }
-                else {
-                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                // Get Post object and use the values to update the UI
+                if(dataSnapshot.getValue(UserInfo.class) != null){
+                    UserInfo userInfo = dataSnapshot.getValue(UserInfo.class);
+                    Log.w("FireBaseData", "getData" + userInfo.toString());
+                } else {
+                    Toast.makeText(SignUpActivity.this, "데이터 없음...", Toast.LENGTH_SHORT).show();
                 }
             }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w("FireBaseData", "loadPost:onCancelled", databaseError.toException());
+            }
         });
-    }
-}
+    }}
