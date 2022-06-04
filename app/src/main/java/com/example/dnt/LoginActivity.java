@@ -23,6 +23,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
 
+<<<<<<< HEAD
         Button login_btn = findViewById(R.id.login_btn);
         TextView sign_up = findViewById(R.id.sign_up);
 //        TextView find = findViewById(R.id.find);
@@ -34,6 +35,11 @@ public class LoginActivity extends AppCompatActivity {
         login_password = findViewById(R.id.login_password);
 
     }
+=======
+        //로그인 버튼 -> list(home)
+        Button login_b = (Button) findViewById(R.id.login_btn);
+        login_b.setOnClickListener(new View.OnClickListener() {
+>>>>>>> a817659d64414e2c1244ac0097d9fce6f635df99
 
     View.OnClickListener OnClickListener = new View.OnClickListener() {
         // do something when the button is clicked
@@ -59,7 +65,11 @@ public class LoginActivity extends AppCompatActivity {
         }
     };
 
+<<<<<<< HEAD
 
+=======
+    }
+>>>>>>> a817659d64414e2c1244ac0097d9fce6f635df99
 }
 
 

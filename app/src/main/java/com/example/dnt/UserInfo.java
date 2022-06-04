@@ -24,13 +24,11 @@ public class UserInfo {
         this.email = email;
     }
 
-    public String getUserName() {
+    public String getNickname() {
         return nickname;
     }
 
-    public void setUserName(String nickname) {
-        this.nickname = nickname;
-    }
+    public void setNickname(String nickname) { this.nickname = nickname; }
 
     public String getPassword() {return password;}
 
