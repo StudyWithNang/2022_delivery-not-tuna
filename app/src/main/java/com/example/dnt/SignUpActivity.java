@@ -102,7 +102,6 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
-
     }
 
     public void ViewController(String name){
