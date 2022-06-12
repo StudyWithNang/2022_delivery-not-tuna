@@ -83,6 +83,15 @@ public class homeFragment extends Fragment {
         adapter = new PostAdapter(arrayList, getContext());
         recyclerView.setAdapter(adapter); // 리사이클러뷰에 어댑터 연결
 
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                adapter = new PostAdapter(arrayList, getContext());
+                recyclerView.setAdapter(adapter); // 리사이클러뷰에 어댑터 연결
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
         //add 버튼
         add_btn = view.findViewById(R.id.home_add_post_btn);
         add_btn.setOnClickListener(new View.OnClickListener() {

@@ -16,9 +16,6 @@
         android:theme="@style/Theme.DNT"
         tools:targetApi="31"
         android:usesCleartextTraffic="true">
-<!--        <activity android:name=".backward"-->
-<!--            android:parentActivityName=".MainActivity"-->
-<!--            />-->
         <activity
             android:name=".MainActivity"
             android:exported="true" >
