@@ -31,12 +31,12 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
         login_email = findViewById(R.id.login_email);
         login_password = findViewById(R.id.login_password);
         login_btn = findViewById(R.id.login_btn);
         signup = findViewById(R.id.signup);
         change_pw = findViewById(R.id.change_pw);
+
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
         //readUser();

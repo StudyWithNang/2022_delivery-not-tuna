@@ -61,7 +61,7 @@ public class PostInfo {
 
     @Override
     public String toString() {
-        return "Post{" +
+        return "post{" +
                 "restaurant='" + restaurant + '\'' +
                 ", deadline_HH='" + deadline_HH + '\'' +
                 ", deadline_mm='" + deadline_mm + '\'' +

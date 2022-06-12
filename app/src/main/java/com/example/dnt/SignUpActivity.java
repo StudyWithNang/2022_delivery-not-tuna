@@ -53,15 +53,15 @@ public class SignUpActivity extends AppCompatActivity {
 
 
         //회원가입 완료후 뒤로 버튼 누르면 다시 로그인 화면으로
-        Button signup_back = (Button) findViewById(R.id.signup_back_btn);
-        signup_back.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
-            }
-        });
+//        Button signup_back = (Button) findViewById(R.id.signup_back_btn);
+//        signup_back.setOnClickListener(new View.OnClickListener() {
+//
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
         //firebase 정의
         mDatabase = FirebaseDatabase.getInstance().getReference();

@@ -76,8 +76,8 @@ public class AddPostActivity extends AppCompatActivity {
                     result.put("deadline_HH", getDeadline_HH);
                     result.put("deadline_mm", getDeadline_mm);
                     result.put("pickup", getPickup);
-                    result.put("price", getPrice);
-                    result.put("description", getDescription);
+                    result.put("errand_price", getPrice);
+                    result.put("errand_description", getDescription);
 
                     writeNewUser(postId, getRestaurant, getDeadline_HH, getDeadline_mm, getPickup, getPrice, getDescription);
                     postId++;

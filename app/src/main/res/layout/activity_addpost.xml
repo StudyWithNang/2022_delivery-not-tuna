@@ -204,22 +204,22 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginLeft="25dp"
                         ></TextView>
+
                     <EditText
+                        android:id="@+id/errand_description"
                         android:layout_width="match_parent"
                         android:layout_height="250dp"
-                        android:id="@+id/errand_description"
-                        android:hint="추가 설명"
-                        android:gravity="top"
-                        android:textSize="14sp"
-                        android:paddingTop="5dp"
-                        android:paddingLeft="5dp"
-                        android:layout_marginTop="10dp"
                         android:layout_marginLeft="25dp"
+                        android:layout_marginTop="10dp"
                         android:layout_marginRight="25dp"
                         android:layout_marginBottom="70dp"
-                        android:textColorHint="#5e5e5e"
                         android:background="@drawable/edittext_border"
-                        ></EditText>
+                        android:gravity="top"
+                        android:hint="추가 설명"
+                        android:paddingLeft="5dp"
+                        android:paddingTop="5dp"
+                        android:textColorHint="#5e5e5e"
+                        android:textSize="14sp"></EditText>
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>
