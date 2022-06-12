@@ -3,55 +3,85 @@ package com.example.dnt;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class LoginActivity extends AppCompatActivity {
     Intent intent;
-    EditText login_email, login_password;
+    EditText login_nickname, login_email, login_password;
     Button login_btn;
     TextView signup, change_pw;
 
-    private DatabaseReference mDatabase;
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    final DatabaseReference table_users = database.getReference("users");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        login_nickname = findViewById(R.id.login_nickname);
         login_email = findViewById(R.id.login_email);
         login_password = findViewById(R.id.login_password);
         login_btn = findViewById(R.id.login_btn);
         signup = findViewById(R.id.signup);
         change_pw = findViewById(R.id.change_pw);
 
-
-        mDatabase = FirebaseDatabase.getInstance().getReference();
-        //readUser();
-
-
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String getUserName = login_nickname.getText().toString();
                 String getUserEmail = login_email.getText().toString();
                 String getUserPW = login_password.getText().toString();
 
-                // db에서 검증 후
+                table_users.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.child(getUserName).exists()) {
+                            // Get user information
+                            UserInfo user = snapshot.child(getUserName).getValue(UserInfo.class);
 
-                intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
+                            // 아무것도 입력하지 않았을 때
+                            if (getUserEmail.equals("") && getUserPW.equals("")) {
+                                Toast.makeText(LoginActivity.this, "계정과 비밀번호를 입력하세요.", Toast.LENGTH_LONG).show();
+                            }
+                            // 아이디와 비밀번호를 잘 입력했을 때
+                            else if (user.getEmail().equals(getUserEmail) && user.getPassword().equals(getUserPW)) {
+                                Toast.makeText(LoginActivity.this, "어서오세요 " + getUserName + "님!", Toast.LENGTH_SHORT).show();
+                                Intent homeIntent = new Intent(LoginActivity.this, MainActivity.class);
+                                startActivity(homeIntent);
+                                finish();
+                            }
+                            // 아이디와 비밀번호가 틀렸을 때
+                            else {
+                                Toast.makeText(LoginActivity.this, "아이디 또는 비밀번호가 틀렸습니다.", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                        // 계정이 없을 때
+                        else {
+                            Toast.makeText(LoginActivity.this, "계정 정보가 없습니다. 회원가입을 먼저 진행해주세요.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+
+                });
+
             }
         });
 
@@ -69,7 +99,7 @@ public class LoginActivity extends AppCompatActivity {
                 intent = new Intent(getApplicationContext(), ChangePwActivity.class);
                 startActivity(intent);
             }
-        };
-
+        });
     }
+
 }
