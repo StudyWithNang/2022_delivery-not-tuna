@@ -69,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
                 intent = new Intent(getApplicationContext(), ChangePwActivity.class);
                 startActivity(intent);
             }
-        };
+        });
 
     }
 }

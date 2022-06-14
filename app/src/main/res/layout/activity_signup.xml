@@ -153,18 +153,17 @@
             />
 
         <EditText
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
             android:id="@+id/signup_nickname"
-            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="31dp"
             android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="25dp"
             android:background="@drawable/edittext_border"
             android:hint=" '새빛2 예쁜이'와 같은 형식으로 작성해 주세요 "
             android:inputType="text"
             android:paddingLeft="5dp"
-            android:textSize="14sp"
-            />
+            android:textSize="14sp" />
 
         <TextView
             android:layout_width="wrap_content"

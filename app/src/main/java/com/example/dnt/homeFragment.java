@@ -1,5 +1,6 @@
 package com.example.dnt;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -7,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.dnt.PostInfo;
 import com.example.dnt.R;
@@ -83,14 +85,34 @@ public class homeFragment extends Fragment {
         adapter = new PostAdapter(arrayList, getContext());
         recyclerView.setAdapter(adapter); // 리사이클러뷰에 어댑터 연결
 
+
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        // 파이어베이스 데이터베이스의 데이터를 받아오는 곳
+                        arrayList.clear(); // 기존 배열리스트가 존재하지않게 초기화
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) { // 반복문으로 데이터 List를 추출해냄
+                            PostInfo PostInfo = snapshot.getValue(PostInfo.class); // 만들어뒀던 User 객체에 데이터를 담는다.
+                            arrayList.add(PostInfo); // 담은 데이터들을 배열리스트에 넣고 리사이클러뷰로 보낼 준비
+                        }
+                        adapter.notifyDataSetChanged(); // 리스트 저장 및 새로고침해야 반영이 됨
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        // 디비를 가져오던중 에러 발생 시
+                        Log.e("homeFragment", String.valueOf(databaseError.toException())); // 에러문 출력
+                    }
+                });
                 adapter = new PostAdapter(arrayList, getContext());
                 recyclerView.setAdapter(adapter); // 리사이클러뷰에 어댑터 연결
                 swipeRefreshLayout.setRefreshing(false);
             }
         });
+
 
         //add 버튼
         add_btn = view.findViewById(R.id.home_add_post_btn);
@@ -101,6 +123,8 @@ public class homeFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+
 
         return view;
     }

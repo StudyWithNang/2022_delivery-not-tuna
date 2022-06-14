@@ -30,6 +30,8 @@
         <activity android:name=".SignUpActivity"></activity>
         <activity android:name=".AddPostActivity"></activity>
         <activity android:name=".ChangePwActivity"></activity>
+        <activity android:name=".DetailActivity"></activity>
+        <activity android:name=".LoginActivity"></activity>
     </application>
 
 </manifest>

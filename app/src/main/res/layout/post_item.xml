@@ -2,82 +2,136 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center_horizontal"
-    android:background="#ffffff"
-    >
+    android:background="#ffffff">
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="384dp"
         android:layout_height="150dp"
-        android:orientation="horizontal"
-        android:background="@drawable/underline"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        >
+        android:background="@drawable/underline"
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="150dp"
-            android:orientation="vertical"
             android:gravity="center_vertical"
-            >
+            android:orientation="vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:text="가게 이름"
-                android:id="@+id/restaurant_name"
-                android:textStyle="bold"
+                android:textColor="@color/black"
                 android:textSize="20sp"
-                android:textColor="@color/black"
-                android:layout_marginLeft="10dp"
-                ></TextView>
+                android:textStyle="bold"></TextView>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:text="픽업장소"
-                android:id="@+id/pickup"
-                android:textSize="14sp"
                 android:textColor="@color/black"
-                android:layout_marginLeft="10dp"
-                ></TextView>
+                android:textSize="14sp"></TextView>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:text="주문시간 시"
-                android:id="@+id/deadline_HH"
-                android:textSize="14sp"
                 android:textColor="@color/black"
-                android:layout_marginLeft="10dp"
-                ></TextView>
+                android:textSize="14sp"></TextView>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="최소주문금액"
-                android:id="@+id/errand_price"
-                android:textSize="14sp"
-                android:textColor="@color/black"
                 android:layout_marginLeft="10dp"
-                ></TextView>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="설명"
-                android:id="@+id/errand_description"
-                android:textSize="14sp"
-                android:textColor="@color/black"
-                android:layout_marginLeft="10dp"
-                ></TextView>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:text="주문시간 분"
-                android:id="@+id/deadline_mm"
-                android:textSize="14sp"
                 android:textColor="@color/black"
+                android:textSize="14sp"></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                ></TextView>
+                android:text="최소주문금액"
+                android:textColor="@color/black"
+                android:textSize="14sp"></TextView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="설명"
+                android:textColor="@color/black"
+                android:textSize="14sp"></TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/restaurant_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="가게 이름"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold"></TextView>
+
+            <TextView
+                android:id="@+id/pickup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="픽업장소"
+                android:textColor="@color/black"
+                android:textSize="14sp"></TextView>
+
+            <TextView
+                android:id="@+id/deadline_HH"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="주문시간 시"
+                android:textColor="@color/black"
+                android:textSize="14sp"></TextView>
+
+            <TextView
+                android:id="@+id/deadline_mm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="주문시간 분"
+                android:textColor="@color/black"
+                android:textSize="14sp"></TextView>
+
+            <TextView
+                android:id="@+id/errand_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="최소주문금액"
+                android:textColor="@color/black"
+                android:textSize="14sp"></TextView>
+
+            <TextView
+                android:id="@+id/errand_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="설명"
+                android:textColor="@color/black"
+                android:textSize="14sp"></TextView>
+
         </LinearLayout>
 
 
     </LinearLayout>
-
 </LinearLayout>

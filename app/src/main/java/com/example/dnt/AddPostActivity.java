@@ -2,6 +2,8 @@ package com.example.dnt;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,7 +30,6 @@ public class AddPostActivity extends AppCompatActivity {
     Intent intent;
     EditText restaurant_name, deadline_HH, deadline_mm, pickup, errand_price, errand_description, userId;
     Button back, post_btn;
-    int postId = 1;
 
     private DatabaseReference mDatabase;
 
@@ -79,19 +80,18 @@ public class AddPostActivity extends AppCompatActivity {
                     result.put("errand_price", getPrice);
                     result.put("errand_description", getDescription);
 
-                    writeNewUser(postId, getRestaurant, getDeadline_HH, getDeadline_mm, getPickup, getPrice, getDescription);
-                    postId++;
+                    writeNewUser(username, getRestaurant, getDeadline_HH, getDeadline_mm, getPickup, getPrice, getDescription);
                     break;
             }
         }
     };
 
-    private void writeNewUser(int postId, String restaurant, String deadline_HH, String deadline_mm, String pickup, String price, String description) {
+    private void writeNewUser(String username, String restaurant, String deadline_HH, String deadline_mm, String pickup, String price, String description) {
 
         String key = mDatabase.child("posts").push().getKey();
         PostInfo post = new PostInfo(restaurant, deadline_HH, deadline_mm, pickup, price, description);
 
-        mDatabase.child("posts").child(String.valueOf(postId)).setValue(post) //db에 순차적으로 posts - 1 - email, name, pw 들어감
+        mDatabase.child("posts").child(username).setValue(post) //db에 순차적으로 posts - 1 - email, name, pw 들어감
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
