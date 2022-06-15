@@ -103,6 +103,7 @@
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
             android:layout_marginRight="25dp"
             android:background="@drawable/edittext_border"
             android:hint=" 전송을 눌러 인증번호를 받으세요 "
