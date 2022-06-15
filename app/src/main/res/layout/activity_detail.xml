@@ -78,6 +78,7 @@
                 >
                 <TextView
                     android:layout_width="match_parent"
+                    android:paddingLeft="20dp"
                     android:layout_height="wrap_content"
                     android:text="가게 이름"
                     android:id="@+id/detail_restaurant_name"
@@ -123,19 +124,17 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintLeft_toRightOf="@id/signup_nickname"
                             ></TextView>
-                        <Button
+                        <androidx.appcompat.widget.AppCompatButton
                             android:layout_width="wrap_content"
                             android:layout_height="30dp"
-                            android:id="@+id/client_info_btn"
-                            android:text="부리미 정보"
-                            android:background="@drawable/login_btn_bg"
-                            android:textColor="@color/white"
+                            android:id="@+id/secret_btn"
+                            android:background="@color/white"
                             android:textStyle="bold"
                             android:textSize="12sp"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintRight_toRightOf="parent"
-                            ></Button>
+                            ></androidx.appcompat.widget.AppCompatButton>
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <LinearLayout
