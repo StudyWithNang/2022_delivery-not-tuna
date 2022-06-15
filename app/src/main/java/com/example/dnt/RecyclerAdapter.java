@@ -66,6 +66,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 intent.putExtra("errand_price", String.valueOf(holder.errand_price));
                 intent.putExtra("errand_description", String.valueOf(holder.errand_description));
                 ContextCompat.startActivity(holder.itemView.getContext(), intent, null);
+                ((MainActivity)holder.itemView.getContext()).overridePendingTransition(R.anim.enter_from_right, R.anim.enter_from_left);
             }
         });
 
