@@ -60,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
                             // 아이디와 비밀번호를 잘 입력했을 때
                             else if (user.getEmail().equals(getUserEmail) && user.getPassword().equals(getUserPW)) {
                                 Toast.makeText(LoginActivity.this, "어서오세요 " + getUserName + "님!", Toast.LENGTH_SHORT).show();
-                                Intent homeIntent = new Intent(LoginActivity.this, HomeActivity.class);
+                                Intent homeIntent = new Intent(LoginActivity.this, MainActivity.class);
                                 homeIntent.putExtra("userName", getUserName);
                                 startActivity(homeIntent);
                                 finish();

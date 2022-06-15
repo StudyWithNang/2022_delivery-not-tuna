@@ -16,42 +16,25 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
 
-public class MypageActivity extends AppCompatActivity {
-    public String userName;
+public class MainActivity extends AppCompatActivity {
     FragmentManager fragmentManager = getSupportFragmentManager();
+    homeFragment homeFragment = new homeFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mypage);
-
-        Button modify_profile_btn = findViewById(R.id.modify_profile_btn);
-        //FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        //fragmentTransaction.replace(R.id.framelayout, homeFragment).commitAllowingStateLoss();
+        setContentView(R.layout.activity_main);
         Intent intent = getIntent();
         String userName = intent.getStringExtra("userName");
-        Toast.makeText(MypageActivity.this, "MypageActivity 들어왔다~ " + userName + "님!", Toast.LENGTH_SHORT).show();
 
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.framelayout, homeFragment).commitAllowingStateLoss();
 
-        modify_profile_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent nextintent = new Intent(getApplicationContext(), ModifyProfileActivity.class);
-                startActivity(nextintent);
-                nextintent.putExtra("userName", userName);
-                finish();
-            }
-        });
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottomnavi);
         bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
             @Override
@@ -59,19 +42,29 @@ public class MypageActivity extends AppCompatActivity {
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
                 switch(item.getItemId()){
                     case R.id.home:
-                        Intent homeIntent = new Intent(MypageActivity.this, MainActivity.class);
-                        homeIntent.putExtra("userName", userName);
-                        startActivity(homeIntent);
-                        finish();
+                        if(homeFragment == null){
+                            homeFragment = new homeFragment();
+                            fragmentManager.beginTransaction().add(R.id.framelayout, homeFragment).commit();
+
+                        }else{
+                            fragmentManager.beginTransaction().show(homeFragment).commit();
+                        }
                         break;
                     case R.id.chat:
                         break;
                     case R.id.mypage:
+                        Intent homeIntent = new Intent(MainActivity.this, MypageActivity.class);
+                        homeIntent.putExtra("userName", userName);
+                        startActivity(homeIntent);
+                        finish();
                         break;
+
                 }
                 return true;
             }
         });
+
     }
+
 
 }
