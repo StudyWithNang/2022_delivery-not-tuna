@@ -43,12 +43,8 @@ public class DetailActivity extends AppCompatActivity{
         pickup = findViewById(R.id.detail_pickup);
         errand_price = findViewById(R.id.detail_errand_price);
         errand_description = findViewById(R.id.detail_errand_description);
-        //객체 가져오기기
-<<<<<<< HEAD
+        //객체 가져오기
         Intent intent = getIntent();
-=======
-       Intent intent = getIntent();
-
 
         String detail_restaurant_name = intent.getStringExtra("restaurant_name");
         String detail_deadline_HH = intent.getStringExtra("deadline_HH");
