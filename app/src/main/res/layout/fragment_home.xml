@@ -36,6 +36,7 @@
         android:layout_height="wrap_content"
         android:background="#ff6565"
         android:orientation="horizontal"
+        android:id="@+id/forPopup"
         android:visibility="visible">
 
         <ImageView

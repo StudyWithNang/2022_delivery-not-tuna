@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.dnt.PostInfo;
@@ -47,6 +48,7 @@ public class homeFragment extends Fragment {
 
     Button add_btn;
     SwipeRefreshLayout swipeRefreshLayout;
+    LinearLayout forPopup;
 
     private View view;
 
@@ -55,6 +57,17 @@ public class homeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home, container, false);
         swipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout);
+        //popup 만들기
+        forPopup = view.findViewById(R.id.forPopup);
+//        forPopup.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                //데이터 담아서 팝업 호출
+//                Intent intent = new Intent(this, PopupActivity.class);
+//                intent.putExtra("data", "Test Popup");
+//                startActivity(intent, 1);
+//            }
+//        });
 
         recyclerView = (RecyclerView) view.findViewById(R.id.homeRecyclerView);
         recyclerView.setHasFixedSize(true); // 리사이클러뷰 기존성능 강화
