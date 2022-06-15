@@ -34,6 +34,7 @@ public class DetailActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
+        //객체 생성
         delete_btn = findViewById(R.id.detail_delete_btn);
         back = findViewById(R.id.detail_back);
         restaurant_name = findViewById(R.id.detail_restaurant_name);
@@ -43,7 +44,11 @@ public class DetailActivity extends AppCompatActivity{
         errand_price = findViewById(R.id.detail_errand_price);
         errand_description = findViewById(R.id.detail_errand_description);
         //객체 가져오기기
+<<<<<<< HEAD
         Intent intent = getIntent();
+=======
+       Intent intent = getIntent();
+
 
         String detail_restaurant_name = intent.getStringExtra("restaurant_name");
         String detail_deadline_HH = intent.getStringExtra("deadline_HH");
