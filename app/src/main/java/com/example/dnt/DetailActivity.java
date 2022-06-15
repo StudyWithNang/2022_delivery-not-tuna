@@ -25,6 +25,7 @@ public class DetailActivity extends AppCompatActivity{
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
     TextView restaurant_name, deadline_HH, deadline_mm, pickup, errand_price, errand_description;
+    TextView detail_restaurant_name, detail_deadline_HH, detail_deadline_mm, detail_pickup, detail_errand_price, detail_errand_description;
     String getRestaurant, getDeadline_HH, getDeadline_mm, getPickup, getPrice, getDescription;
     Button back, delete_btn;
 
@@ -43,20 +44,12 @@ public class DetailActivity extends AppCompatActivity{
         errand_price = findViewById(R.id.errand_price);
         errand_description = findViewById(R.id.errand_description);
 
-
-        String getRestaurant = intent.getStringExtra("restaurant_name");
-        String getDeadline_HH = intent.getStringExtra("deadline_HH");
-        String getDeadline_mm = intent.getStringExtra("deadline_mm");
-        String getPickup = intent.getStringExtra("pickup");
-        String getPrice = intent.getStringExtra("errand_price");
-        String getDescription = intent.getStringExtra("errand_description");
-
-//        restaurant_name.setText(getRestaurant);
-//        deadline_HH.setText(getDeadline_HH);
-//        deadline_mm.setText(getDeadline_mm);
-//        pickup.setText(getPickup);
-//        errand_price.setText(getPrice);
-//        errand_description.setText(getDescription);
+        String restaurant_name = intent.getStringExtra("restaurant_name");
+        String deadline_HH = intent.getStringExtra("deadline_HH");
+        String deadline_mm = intent.getStringExtra("deadline_mm");
+        String pickup = intent.getStringExtra("pickup");
+        String errand_price = intent.getStringExtra("errand_price");
+        String errand_description = intent.getStringExtra("errand_description");
 
         back.setOnClickListener(onClickListener);
     }

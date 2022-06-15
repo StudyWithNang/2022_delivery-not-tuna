@@ -16,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
+import com.example.dnt.MainActivity;
 import com.example.dnt.PostInfo;
 import com.example.dnt.DetailActivity;
 import com.example.dnt.R;
@@ -28,9 +29,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
     //어댑터에서 액티비티 액션을 가져올 때 context가 필요한데 어댑터에는 context가 없다.
     //선택한 액티비티에 대한 context를 가져올 때 필요하다.
 
-    public PostAdapter(ArrayList<PostInfo> arrayList, Context context) {
+    public PostAdapter(ArrayList<PostInfo> arrayList) {
         this.arrayList = arrayList;
-        this.context = context;
     }
 
     @NonNull
@@ -44,7 +44,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull PostAdapter.PostViewHolder holder, int position) {
-        Log.e("arrayList", arrayList.get(position).getRestaurant());
+        Log.e("postadapter", String.valueOf(holder.itemView.getContext()));
         PostInfo postinfo = arrayList.get(position);
         holder.restaurant_name.setText(arrayList.get(position).getRestaurant());
         holder.deadline_HH.setText(arrayList.get(position).getDeadline_HH());
@@ -52,7 +52,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         holder.pickup.setText(arrayList.get(position).getPickup());
         holder.errand_price.setText(arrayList.get(position).getPrice());
         holder.errand_description.setText(arrayList.get(position).getDescription());
-        //holder.setItem(postinfo);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,21 +73,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         public PostViewHolder(@NonNull View itemView) {
             super(itemView);
             Log.e("111", ((TextView) itemView.findViewById(R.id.restaurant_name)).toString());
-            //itemView.setContentView(R.layout.);
-            this.restaurant_name = (TextView) itemView.findViewById(R.id.restaurant_name);
-            this.deadline_HH = (TextView) itemView.findViewById(R.id.deadline_HH);
-            this.deadline_mm = (TextView) itemView.findViewById(R.id.deadline_mm);
-            this.pickup = (TextView) itemView.findViewById(R.id.pickup);
-            this.errand_description = (TextView) itemView.findViewById(R.id.errand_description);
-            this.errand_price = (TextView) itemView.findViewById(R.id.errand_price);
-        }
-        public void setItem(PostInfo postInfo){
-            restaurant_name.setText(postInfo.getRestaurant());
-            deadline_HH.setText(postInfo.getDeadline_HH());
-            deadline_mm.setText(postInfo.getDeadline_mm());
-            pickup.setText(postInfo.getPickup());
-            errand_price.setText(postInfo.getPrice());
-            errand_description.setText(postInfo.getDescription());
+            restaurant_name = (TextView) itemView.findViewById(R.id.restaurant_name);
+            deadline_HH = (TextView) itemView.findViewById(R.id.deadline_HH);
+            deadline_mm = (TextView) itemView.findViewById(R.id.deadline_mm);
+            pickup = (TextView) itemView.findViewById(R.id.pickup);
+            errand_description = (TextView) itemView.findViewById(R.id.errand_description);
+            errand_price = (TextView) itemView.findViewById(R.id.errand_price);
         }
     }
 

@@ -1,5 +1,6 @@
 package com.example.dnt;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
@@ -26,6 +28,7 @@ import java.util.TimeZone;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     ArrayList<PostInfo> itemList;
+    private Context context;
     public class ViewHolder extends RecyclerView.ViewHolder{
         int id;
         TextView restaurant_name, pickup, deadline_HH, deadline_mm, errand_price, errand_description;
@@ -40,8 +43,9 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             errand_description = itemview.findViewById(R.id.errand_description);
         }
     }
-    public RecyclerAdapter(ArrayList<PostInfo> itemList){
+    public RecyclerAdapter(ArrayList<PostInfo> itemList, Context context){
         this.itemList = itemList;
+        this.context = context;
     }
     @NonNull
     @Override
@@ -54,9 +58,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewholder, int position) {
         ViewHolder holder = (ViewHolder) viewholder;
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        dateFormat.setTimeZone(TimeZone.getTimeZone("Etc/GMT"));
-//        holder.id = itemList.get(position).getId();
         holder.restaurant_name.setText(itemList.get(position).getRestaurant());
         holder.deadline_HH.setText(itemList.get(position).getDeadline_HH());
         holder.deadline_mm.setText(itemList.get(position).getDeadline_mm());
@@ -67,26 +68,20 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //Toast.makeText(RecyclerAdapter.this, String.valueOf(holder.restaurant_name), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(holder.itemView.getContext(), DetailActivity.class);
-                intent.putExtra("id", String.valueOf(holder.id));
+                intent.putExtra("restaurant_name", String.valueOf(holder.restaurant_name));
+                intent.putExtra("deadline_HH", String.valueOf(holder.deadline_HH));
+                intent.putExtra("deadline_mm", String.valueOf(holder.deadline_mm));
+                intent.putExtra("pickup", String.valueOf(holder.pickup));
+                intent.putExtra("errand_price", String.valueOf(holder.errand_price));
+                intent.putExtra("errand_description", String.valueOf(holder.errand_description));
                 ContextCompat.startActivity(holder.itemView.getContext(), intent, null);
                 ((MainActivity)holder.itemView.getContext()).overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
             }
         });
-//        String status = itemList.get(position).getStatus();
-//        if(status.equals("end")) {
-//            holder.review.setVisibility(View.VISIBLE);
-//            holder.review.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View view) {
-//                    Intent intent = new Intent(holder.itemView.getContext(), ReviewPopup.class);
-//                    intent.putExtra("id", holder.id + "");
-//                    ContextCompat.startActivity(holder.itemView.getContext(), intent, null);
-//                }
-//            });
-//        }
-    }
 
+    }
 
     @Override
     public int getItemCount() {

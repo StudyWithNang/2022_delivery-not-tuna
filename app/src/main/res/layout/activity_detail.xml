@@ -255,7 +255,7 @@
                         android:paddingTop="5dp"
                         android:paddingLeft="5dp"
                         android:paddingRight="5dp"
-                        android:id="@+id/detail_errand_description"
+                        android:id="@+id/errand_description"
                         android:layout_marginTop="10dp"
                         android:background="#f4f4f4"
                         ></TextView>
@@ -272,16 +272,10 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="'부름부름'은 통신판매중개자로서 부름부름의 거래 당사자가 아니며, 판매자가 등록한 상품정보 및 거래에 대해 책임을 지지 않습니다."
-                    android:textSize="9sp"
-                    android:layout_marginTop="5dp"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Copyright ⓒ 부름부름Inc. All rights reserved."
+                    android:text="배달못참치"
+                    android:gravity="center"
                     android:textSize="17sp"
+                    android:layout_marginTop="10dp"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"/>
                 <View

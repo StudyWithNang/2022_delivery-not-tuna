@@ -21,6 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.example.dnt.AddPostActivity;
 import com.example.dnt.R;
 import com.example.dnt.PostAdapter;
+import com.example.dnt.RecyclerAdapter;
 //import com.example.dnt.ImageViewPagerAdapter;
 //import com.example.dnt.RecyclerAdapter;
 //import com.example.dnt.SearchActivity;
@@ -37,11 +38,12 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 public class homeFragment extends Fragment {
     private RecyclerView recyclerView;
-    private RecyclerView.Adapter adapter;
+    //private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private ArrayList<PostInfo> arrayList;
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
+    RecyclerAdapter adapter;
 
     Button add_btn;
     SwipeRefreshLayout swipeRefreshLayout;
@@ -82,7 +84,7 @@ public class homeFragment extends Fragment {
                 Log.e("homeFragment", String.valueOf(databaseError.toException())); // 에러문 출력
             }
         });
-        adapter = new PostAdapter(arrayList, getContext());
+        adapter = new RecyclerAdapter(arrayList, getContext());
         recyclerView.setAdapter(adapter); // 리사이클러뷰에 어댑터 연결
 
 
@@ -107,7 +109,7 @@ public class homeFragment extends Fragment {
                         Log.e("homeFragment", String.valueOf(databaseError.toException())); // 에러문 출력
                     }
                 });
-                adapter = new PostAdapter(arrayList, getContext());
+                adapter = new RecyclerAdapter(arrayList,getContext());
                 recyclerView.setAdapter(adapter); // 리사이클러뷰에 어댑터 연결
                 swipeRefreshLayout.setRefreshing(false);
             }
