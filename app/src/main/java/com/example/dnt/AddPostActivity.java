@@ -28,6 +28,7 @@ import java.util.Map;
 public class AddPostActivity extends AppCompatActivity {
 
     Intent intent;
+    String userName;
     EditText restaurant_name, deadline_HH, deadline_mm, pickup, errand_price, errand_description, userId;
     Button back, post_btn;
     int postId = 1;
@@ -38,6 +39,9 @@ public class AddPostActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addpost);
+
+        Intent intent = getIntent();
+        userName = intent.getStringExtra("userName");
 
         restaurant_name = findViewById(R.id.restaurant_name);
         deadline_HH = findViewById(R.id.deadline_HH);
@@ -62,6 +66,9 @@ public class AddPostActivity extends AppCompatActivity {
         public void onClick(View v) {
             switch(v.getId()){
                 case R.id.post_back:
+                    Intent homeIntent = new Intent(AddPostActivity.this, HomeActivity.class);
+                    homeIntent.putExtra("userName", userName);
+                    startActivity(homeIntent);
                     finish();
                     break;
                 case R.id.post_btn:

@@ -80,7 +80,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="가게 이름"
-                    android:id="@+id/restaurant_name"
+                    android:id="@+id/detail_restaurant_name"
                     android:textSize="30sp"
                     android:textStyle="bold"
                     android:textColor="@color/black"
@@ -195,7 +195,7 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/pickup"
+                                android:id="@+id/detail_pickup"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="20dp"
@@ -205,7 +205,7 @@
                                 android:textSize="12sp"></TextView>
 
                             <TextView
-                                android:id="@+id/deadline_HH"
+                                android:id="@+id/detail_deadline_HH"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="20dp"
@@ -215,7 +215,7 @@
                                 android:textSize="12sp"></TextView>
 
                             <TextView
-                                android:id="@+id/deadline_mm"
+                                android:id="@+id/detail_deadline_mm"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="20dp"
@@ -226,7 +226,7 @@
                                 android:textSize="12sp"></TextView>
 
                             <TextView
-                                android:id="@+id/errand_price"
+                                android:id="@+id/detail_errand_price"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="20dp"
@@ -255,7 +255,7 @@
                         android:paddingTop="5dp"
                         android:paddingLeft="5dp"
                         android:paddingRight="5dp"
-                        android:id="@+id/errand_description"
+                        android:id="@+id/detail_errand_description"
                         android:layout_marginTop="10dp"
                         android:background="#f4f4f4"
                         ></TextView>

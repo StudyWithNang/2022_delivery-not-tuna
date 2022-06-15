@@ -2,29 +2,18 @@ package com.example.dnt;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.dnt.MainActivity;
-import com.example.dnt.DetailActivity;
-import com.example.dnt.R;
 //import com.example.hanium.activities.ReviewPopup;
-import com.example.dnt.PostInfo;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.TimeZone;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     ArrayList<PostInfo> itemList;
@@ -77,7 +66,6 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 intent.putExtra("errand_price", String.valueOf(holder.errand_price));
                 intent.putExtra("errand_description", String.valueOf(holder.errand_description));
                 ContextCompat.startActivity(holder.itemView.getContext(), intent, null);
-                ((MainActivity)holder.itemView.getContext()).overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
             }
         });
 

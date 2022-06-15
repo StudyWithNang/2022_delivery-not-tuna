@@ -60,6 +60,7 @@ public class SignUpActivity extends AppCompatActivity {
         signup_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String getUserEmail = signup_email.getText().toString();
                 String getUserName = signup_nickname.getText().toString();
                 String getUserPW = signup_password.getText().toString();
