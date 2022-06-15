@@ -33,23 +33,32 @@ public class DetailActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
-        Intent intent = getIntent();
 
+        //객체 생성
         delete_btn = findViewById(R.id.detail_delete_btn);
         back = findViewById(R.id.detail_back);
-        restaurant_name = findViewById(R.id.restaurant_name);
-        deadline_HH = findViewById(R.id.deadline_HH);
-        deadline_mm = findViewById(R.id.deadline_mm);
-        pickup = findViewById(R.id.pickup);
-        errand_price = findViewById(R.id.errand_price);
-        errand_description = findViewById(R.id.errand_description);
+        restaurant_name = findViewById(R.id.detail_restaurant_name);
+        deadline_HH = findViewById(R.id.detail_deadline_HH);
+        deadline_mm = findViewById(R.id.detail_deadline_mm);
+        pickup = findViewById(R.id.detail_pickup);
+        errand_price = findViewById(R.id.detail_errand_price);
+        errand_description = findViewById(R.id.detail_errand_description);
+        //객체 가져오기기
+       Intent intent = getIntent();
 
-        String restaurant_name = intent.getStringExtra("restaurant_name");
-        String deadline_HH = intent.getStringExtra("deadline_HH");
-        String deadline_mm = intent.getStringExtra("deadline_mm");
-        String pickup = intent.getStringExtra("pickup");
-        String errand_price = intent.getStringExtra("errand_price");
-        String errand_description = intent.getStringExtra("errand_description");
+        String detail_restaurant_name = intent.getStringExtra("restaurant_name");
+        String detail_deadline_HH = intent.getStringExtra("deadline_HH");
+        String detail_deadline_mm = intent.getStringExtra("deadline_mm");
+        String detail_pickup = intent.getStringExtra("pickup");
+        String detail_errand_price = intent.getStringExtra("errand_price");
+        String detail_errand_description = intent.getStringExtra("errand_description");
+
+        restaurant_name.setText(detail_restaurant_name);
+        deadline_HH.setText(detail_deadline_HH);
+        deadline_mm.setText(detail_deadline_mm);
+        pickup.setText(detail_pickup);
+        errand_price.setText(detail_errand_price);
+        errand_description.setText(detail_errand_description);
 
         back.setOnClickListener(onClickListener);
     }
