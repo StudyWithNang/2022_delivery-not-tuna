@@ -33,7 +33,12 @@ public class AddPostActivity extends AppCompatActivity {
     Button back, post_btn;
     int postId = 1;
 
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference mDatabase;
+    final DatabaseReference table_users = database.getReference("users");
+    final DatabaseReference table_chats = database.getReference("chats");
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +46,9 @@ public class AddPostActivity extends AppCompatActivity {
         setContentView(R.layout.activity_addpost);
 
         Intent intent = getIntent();
-        userName = intent.getStringExtra("userName");
+        //userName = intent.getStringExtra("userName");
+        userName = "alice";
+        //Toast.makeText(AddPostActivity.this, "저장을 완료했습니다."+userName, Toast.LENGTH_SHORT).show();
 
         restaurant_name = findViewById(R.id.restaurant_name);
         deadline_HH = findViewById(R.id.deadline_HH);
@@ -56,7 +63,9 @@ public class AddPostActivity extends AppCompatActivity {
         //firebase 정의
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
+
         readUser();
+        readChat();
 
         back.setOnClickListener(OnClickListener);
         post_btn.setOnClickListener(OnClickListener);
@@ -66,7 +75,7 @@ public class AddPostActivity extends AppCompatActivity {
         public void onClick(View v) {
             switch(v.getId()){
                 case R.id.post_back:
-                    Intent homeIntent = new Intent(AddPostActivity.this, HomeActivity.class);
+                    Intent homeIntent = new Intent(AddPostActivity.this, MainActivity.class);
                     homeIntent.putExtra("userName", userName);
                     startActivity(homeIntent);
                     finish();
@@ -87,8 +96,11 @@ public class AddPostActivity extends AppCompatActivity {
                     result.put("pickup", getPickup);
                     result.put("errand_price", getPrice);
                     result.put("errand_description", getDescription);
-
                     writeNewUser(postId, getRestaurant, getDeadline_HH, getDeadline_mm, getPickup, getPrice, getDescription);
+
+                    // 채팅방 만들기
+                    writeNewChat(postId, userName, 1);
+
                     postId++;
                     break;
             }
@@ -115,7 +127,6 @@ public class AddPostActivity extends AppCompatActivity {
                         Toast.makeText(AddPostActivity.this, "저장을 실패했습니다.", Toast.LENGTH_SHORT).show();
                     }
                 });
-
     }
 
     private void readUser(){
@@ -126,6 +137,68 @@ public class AddPostActivity extends AppCompatActivity {
                 if(dataSnapshot.getValue(PostInfo.class) != null){
                     PostInfo post = dataSnapshot.getValue(PostInfo.class);
                     Log.w("FireBaseData", "getData" + post.toString());
+                } else {
+                    Toast.makeText(AddPostActivity.this, "데이터 없음...", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Getting Post failed, log a message
+                Log.w("FireBaseData", "loadPost:onCancelled", databaseError.toException());
+            }
+        });
+    }
+
+    private void writeNewChat(int postId, String userName, int count) {
+        Toast.makeText(AddPostActivity.this, "writeNewChat!"+userName, Toast.LENGTH_SHORT).show();
+
+        table_chats.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Toast.makeText(AddPostActivity.this, "table_chats!", Toast.LENGTH_SHORT).show();
+                ChatInfo chat = snapshot.child("chatroom1").getValue(ChatInfo.class);
+
+                Map<String, Object> mapChat = new HashMap<String, Object>();
+                mapChat.put("users", count);
+                mapChat.put("postnum", postId);
+                // 여기 postId
+                mDatabase.child("chats").child("chatroom"+"2").updateChildren(mapChat);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(AddPostActivity.this, "error1111111!", Toast.LENGTH_SHORT).show();
+            }
+        });
+        table_users.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Toast.makeText(AddPostActivity.this, "table_users!", Toast.LENGTH_SHORT).show();
+                UserInfo user = snapshot.child(userName).getValue(UserInfo.class);
+
+                Map<String, Object> mapUser = new HashMap<String, Object>();
+                mapUser.put("chatting", postId);
+                mDatabase.child("users").child(userName).updateChildren(mapUser);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+                Toast.makeText(AddPostActivity.this, "error2222222!", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+    private void readChat(){
+        mDatabase.child("chatting").child("1").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                // Get Post object and use the values to update the UI
+                if(dataSnapshot.getValue(ChatInfo.class) != null){
+                    ChatInfo chat = dataSnapshot.getValue(ChatInfo.class);
+                    Log.w("FireBaseData", "getData" + chat.toString());
                 } else {
                     Toast.makeText(AddPostActivity.this, "데이터 없음...", Toast.LENGTH_SHORT).show();
                 }

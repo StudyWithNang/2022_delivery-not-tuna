@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,9 +27,9 @@ import java.util.ArrayList;
 public class DetailActivity extends AppCompatActivity{
     private DatabaseReference databaseReference;
     TextView restaurant_name, deadline_HH, deadline_mm, pickup, errand_price, errand_description, signup_nickname;
-    TextView detail_restaurant_name, detail_deadline_HH, detail_deadline_mm, detail_pickup, detail_errand_price, detail_errand_description;
-    String getRestaurant, getDeadline_HH, getDeadline_mm, getPickup, getPrice, getDescription;
-    Button back, delete_btn, secret_btn;
+    String detail_restaurant_name, detail_deadline_HH, detail_deadline_mm, detail_pickup;
+    Button back, delete_btn, secret_btn, chat_btn;
+    String userName;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     final DatabaseReference table_posts = database.getReference("posts");
@@ -43,6 +44,7 @@ public class DetailActivity extends AppCompatActivity{
         secret_btn = findViewById(R.id.secret_btn);
         delete_btn = findViewById(R.id.detail_delete_btn);
         back = findViewById(R.id.detail_back);
+        chat_btn = findViewById(R.id.chat_btn);
         restaurant_name = findViewById(R.id.detail_restaurant_name);
         deadline_HH = findViewById(R.id.detail_deadline_HH);
         deadline_mm = findViewById(R.id.detail_deadline_mm);
@@ -52,13 +54,8 @@ public class DetailActivity extends AppCompatActivity{
         //객체 가져오기
         Intent intent = getIntent();
 
-        String userName = intent.getStringExtra("userName");
-        String detail_restaurant_name = intent.getStringExtra("restaurant_name");
-        String detail_deadline_HH = intent.getStringExtra("deadline_HH");
-        String detail_deadline_mm = intent.getStringExtra("deadline_mm");
-        String detail_pickup = intent.getStringExtra("pickup");
-        String detail_errand_price = intent.getStringExtra("errand_price");
-        String detail_errand_description = intent.getStringExtra("errand_description");
+        userName = intent.getStringExtra("userName");
+        userName = "alice"; //userName null로 나옴
 
         secret_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,9 +65,13 @@ public class DetailActivity extends AppCompatActivity{
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         PostInfo post = snapshot.child("1").getValue(PostInfo.class);
                         restaurant_name.setText(post.getRestaurant());
+                        detail_restaurant_name = post.getRestaurant();
                         deadline_HH.setText(post.getDeadline_HH());
+                        detail_deadline_HH = post.getDeadline_HH();
                         deadline_mm.setText(post.getDeadline_mm());
+                        detail_deadline_mm = post.getDeadline_mm();
                         pickup.setText(post.getPickup());
+                        detail_pickup = post.getPickup();
                         errand_price.setText(post.getPrice());
                         errand_description.setText(post.getDescription());
                         signup_nickname.setText("nh");
@@ -81,6 +82,22 @@ public class DetailActivity extends AppCompatActivity{
 
                     }
                 });
+            }
+        });
+
+        chat_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent nextIntent = new Intent(DetailActivity.this, ChatBeforeActivity.class);
+                nextIntent.putExtra("userName", userName);
+                nextIntent.putExtra("restaurant", detail_restaurant_name);
+                nextIntent.putExtra("HH", detail_deadline_HH);
+                nextIntent.putExtra("mm", detail_deadline_mm);
+                nextIntent.putExtra("pickup", detail_pickup);
+
+
+                startActivity(nextIntent);
+                finish();
             }
         });
 
