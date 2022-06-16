@@ -35,6 +35,8 @@ public class ChatActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     final DatabaseReference table_chats = database.getReference("chats");
 
+    DatabaseReference mdatabase = FirebaseDatabase.getInstance().getReference();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +45,7 @@ public class ChatActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         userName = intent.getStringExtra("userName");
-        //Toast.makeText(ChatActivity.this, "ChatActivity! " + userName + "님!", Toast.LENGTH_SHORT).show();
+        Toast.makeText(ChatActivity.this, "ChatActivity! " + userName + "님!", Toast.LENGTH_SHORT).show();
 
         //mContext = this;
 
@@ -56,12 +58,12 @@ public class ChatActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
 
 
-        //Firebase DB관리 객체와 'chat'노드 참조객체 얻어오기
+        //Firebase DB관리 객체와 'caht'노드 참조객체 얻어오기
         database= FirebaseDatabase.getInstance();
 
         //firebaseDB에서 채팅 메세지들 실시간 읽어오기..
         //'chats'노드에 저장되어 있는 데이터들을 읽어오기
-        //table_chats에 데이터가 변경되는 것을 듣는 리스너 추가
+        //table_chats에 데이터가 변경되는 것으 듣는 리스너 추가
         table_chats.addChildEventListener(new ChildEventListener() {
             //새로 추가된 것만 줌 ValueListener는 하나의 값만 바뀌어도 처음부터 다시 값을 줌
             @Override
@@ -114,9 +116,10 @@ public class ChatActivity extends AppCompatActivity {
 
         //firebase DB에 저장할 값(MessageItem객체) 설정
         ChatInfo chatInfo= new ChatInfo(message, time, nickName);
-        //'char'노드에 MessageItem객체를 통해
-        // 여기
-        table_chats.child("chatroom1").push().setValue(chatInfo);
+
+        table_chats.push().setValue(chatInfo);
+        //table_chats.child("chatroom").push().setValue(chatInfo); -> DB엔 올라가지만 화면에는 안보임
+
 
         //EditText에 있는 글씨 지우기
         input_message.setText("");

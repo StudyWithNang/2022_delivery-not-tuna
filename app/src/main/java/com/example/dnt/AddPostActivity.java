@@ -163,7 +163,7 @@ public class AddPostActivity extends AppCompatActivity {
                 mapChat.put("users", count);
                 mapChat.put("postnum", postId);
                 // 여기 postId
-                mDatabase.child("chats").child("chatroom"+"2").updateChildren(mapChat);
+                mDatabase.child("chats").child("chatroom1").updateChildren(mapChat);
             }
 
             @Override
