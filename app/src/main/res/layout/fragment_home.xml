@@ -36,7 +36,6 @@
         android:layout_height="wrap_content"
         android:background="#ff6565"
         android:orientation="horizontal"
-        android:id="@+id/forPopup"
         android:visibility="visible">
 
         <ImageView
@@ -71,11 +70,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="음식추천! 이 곳을 눌러보세요!"
+                android:id="@+id/clickpop"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/secret_popbtn"
+            android:background="#ff6565"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            ></androidx.appcompat.widget.AppCompatButton>
 
     </LinearLayout>
     <androidx.constraintlayout.widget.ConstraintLayout

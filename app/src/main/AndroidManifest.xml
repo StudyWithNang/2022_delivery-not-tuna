@@ -35,8 +35,13 @@
         <activity android:name=".MypageActivity"></activity>
         <activity android:name=".ModifyProfileActivity"></activity>
         <activity android:name=".MainActivity"></activity>
+<<<<<<< HEAD
         <activity android:name=".ChatActivity"></activity>
         <activity android:name=".ChatBeforeActivity"></activity>
+=======
+        <!-- 팝업 Activity -->
+        <activity android:name=".PopupActivity" android:theme="@style/popupTheme" android:screenOrientation="portrait" />
+>>>>>>> origin/main
     </application>
 
 </manifest>
