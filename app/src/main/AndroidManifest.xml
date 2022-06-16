@@ -35,6 +35,8 @@
         <activity android:name=".MypageActivity"></activity>
         <activity android:name=".ModifyProfileActivity"></activity>
         <activity android:name=".MainActivity"></activity>
+        <!-- 팝업 Activity -->
+        <activity android:name=".PopupActivity" android:theme="@style/popupTheme" android:screenOrientation="portrait" />
     </application>
 
 </manifest>
