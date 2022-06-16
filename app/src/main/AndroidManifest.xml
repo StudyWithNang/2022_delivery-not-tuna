@@ -41,4 +41,5 @@
         <activity android:name=".PopupActivity" android:theme="@style/popupTheme" android:screenOrientation="portrait" />
     </application>
 
+
 </manifest>

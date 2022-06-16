@@ -33,6 +33,7 @@ public class ChatInfo {
         this.message = message;
         this.time = time;
         this.userName = userName;
+        this.postnum = 1;
     };
 
 
