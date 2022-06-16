@@ -14,13 +14,15 @@ import androidx.recyclerview.widget.RecyclerView;
 //import com.example.hanium.activities.ReviewPopup;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     ArrayList<PostInfo> itemList;
+    List<PostInfo> saveList;
     private Context context;
     public class ViewHolder extends RecyclerView.ViewHolder{
         int id;
-        TextView restaurant_name, pickup, deadline_HH, deadline_mm, errand_price, errand_description;
+        TextView restaurant_name, pickup, deadline_HH, deadline_mm, delivery_price, delivery_description;
 
         ViewHolder(View itemview){
             super(itemview);
@@ -28,13 +30,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             pickup = itemview.findViewById(R.id.pickup);
             deadline_HH = itemview.findViewById(R.id.deadline_HH);
             deadline_mm = itemview.findViewById(R.id.deadline_mm);
-            errand_price = itemview.findViewById(R.id.errand_price);
-            errand_description = itemview.findViewById(R.id.errand_description);
+            delivery_price = itemview.findViewById(R.id.delivery_price);
+            delivery_description = itemview.findViewById(R.id.delivery_description);
         }
     }
-    public RecyclerAdapter(ArrayList<PostInfo> itemList, Context context){
+    public RecyclerAdapter(ArrayList<PostInfo> itemList, Context context, List<PostInfo> saveList){
         this.itemList = itemList;
         this.context = context;
+        this.saveList = saveList;
     }
     @NonNull
     @Override
@@ -51,8 +54,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         holder.deadline_HH.setText(itemList.get(position).getDeadline_HH());
         holder.deadline_mm.setText(itemList.get(position).getDeadline_mm());
         holder.pickup.setText(itemList.get(position).getPickup());
-        holder.errand_price.setText(itemList.get(position).getPrice());
-        holder.errand_description.setText(itemList.get(position).getDescription());
+        holder.delivery_price.setText(itemList.get(position).getPrice());
+        holder.delivery_description.setText(itemList.get(position).getDescription());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,8 +66,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 intent.putExtra("deadline_HH", String.valueOf(holder.deadline_HH));
                 intent.putExtra("deadline_mm", String.valueOf(holder.deadline_mm));
                 intent.putExtra("pickup", String.valueOf(holder.pickup));
-                intent.putExtra("errand_price", String.valueOf(holder.errand_price));
-                intent.putExtra("errand_description", String.valueOf(holder.errand_description));
+                intent.putExtra("errand_price", String.valueOf(holder.delivery_price));
+                intent.putExtra("errand_description", String.valueOf(holder.delivery_description));
                 ContextCompat.startActivity(holder.itemView.getContext(), intent, null);
                 ((MainActivity)holder.itemView.getContext()).overridePendingTransition(R.anim.enter_from_right, R.anim.enter_from_left);
             }
@@ -81,6 +84,12 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public int getItemViewType(int position) {
         return position;
     }
+
+    public void  filterList(ArrayList<PostInfo> itemList) {
+        itemList = itemList;
+        notifyDataSetChanged();
+    }
+
 }
 
 

@@ -54,8 +54,8 @@ public class AddPostActivity extends AppCompatActivity {
         deadline_HH = findViewById(R.id.deadline_HH);
         deadline_mm = findViewById(R.id.deadline_mm);
         pickup = findViewById(R.id.pickup);
-        errand_price = findViewById(R.id.errand_price);
-        errand_description = findViewById(R.id.errand_description);
+        errand_price = findViewById(R.id.delivery_price);
+        errand_description = findViewById(R.id.delivery_description);
         post_btn = findViewById(R.id.post_btn);
         userId = findViewById(R.id.signup_nickname);
         back = findViewById(R.id.post_back);
