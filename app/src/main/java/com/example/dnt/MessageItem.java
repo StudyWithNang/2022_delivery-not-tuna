@@ -1,30 +1,30 @@
 package com.example.dnt;
+import com.google.firebase.database.Exclude;
+import com.google.firebase.database.IgnoreExtraProperties;
 
+import java.util.HashMap;
+import java.util.Map;
+
+@IgnoreExtraProperties
 public class MessageItem {
+    public  int postnum;
 
-    String name;
-    String message;
-    String time;
+    public String userName = "";
+    public String message = "";
+    public String time = "";
 
-    public MessageItem(String name, String message, String time) {
-        this.name = name;
-        this.message = message;
-        this.time = time;
-    }
 
-    //firebase DB에 객체로 값을 읽어올 때..
-    //파라미터가 비어있는 생성자가 핑요함.
     public MessageItem() {
     }
 
-    //Getter & Setter
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public MessageItem(String message, String time, String userName) {
+        this.message = message;
+        this.time = time;
+        this.userName = userName;
+        this.postnum = 1;
+    };
+
 
     public String getMessage() {
         return message;
@@ -40,6 +40,22 @@ public class MessageItem {
 
     public void setTime(String time) {
         this.time = time;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public int getPostnum() {
+        return postnum;
+    }
+
+    public void setPostnum(int postnum) {
+        this.postnum = postnum;
     }
 
 }
