@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -98,6 +99,15 @@ public class ChatActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
+            }
+        });
+
+        // 상단의 뒤로가기 버튼 누르면 채팅방 입장 화면으로 전환
+        Button back_btn = (Button) findViewById(R.id.back_btn);
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
 

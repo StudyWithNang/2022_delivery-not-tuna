@@ -105,7 +105,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:id="@+id/signup_nickname"
+                            android:id="@+id/writer"
+                            android:text=""
                             android:textSize="15sp"
                             android:textStyle="bold"
                             android:textColor="@color/black"
@@ -113,17 +114,18 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintLeft_toLeftOf="parent"
                             ></TextView>
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+
                             android:text=" 님의 주문입니다."
+                            android:textColor="@color/black"
                             android:textSize="15sp"
                             android:textStyle="bold"
-                            android:textColor="@color/black"
-                            app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintLeft_toRightOf="@id/signup_nickname"
-                            ></TextView>
+                            app:layout_constraintStart_toEndOf="@+id/writer"
+                            app:layout_constraintTop_toTopOf="parent"></TextView>
                         <androidx.appcompat.widget.AppCompatButton
                             android:layout_width="wrap_content"
                             android:layout_height="30dp"
