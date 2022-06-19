@@ -75,7 +75,7 @@ public class DetailActivity extends AppCompatActivity{
                 table_posts.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        PostInfo post = snapshot.child(String.valueOf(postId)).getValue(PostInfo.class);
+                        PostInfo post = snapshot.child("1").getValue(PostInfo.class);
                         writer.setText(post.getWriter());
                         detail_writer = post.getWriter();
                         restaurant_name.setText(post.getRestaurant());
