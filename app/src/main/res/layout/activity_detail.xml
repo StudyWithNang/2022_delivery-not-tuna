@@ -80,7 +80,7 @@
                     android:layout_width="match_parent"
                     android:paddingLeft="20dp"
                     android:layout_height="wrap_content"
-                    android:text="가게 이름"
+                    android:text=""
                     android:id="@+id/detail_restaurant_name"
                     android:textSize="30sp"
                     android:textStyle="bold"
@@ -199,7 +199,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="20dp"
                                 android:layout_marginTop="10dp"
-                                android:text="픽업장소"
+                                android:text=""
                                 android:textColor="@color/black"
                                 android:textSize="12sp"></TextView>
 
@@ -209,7 +209,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="20dp"
                                 android:layout_marginTop="10dp"
-                                android:text="주문시간 시"
+                                android:text=""
                                 android:textColor="@color/black"
                                 android:textSize="12sp"></TextView>
 
@@ -220,18 +220,18 @@
                                 android:layout_marginLeft="20dp"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginBottom="10dp"
-                                android:text="주문시간 분"
+                                android:text=""
                                 android:textColor="@color/black"
                                 android:textSize="12sp"></TextView>
 
                             <TextView
-                                android:id="@+id/detail_errand_price"
+                                android:id="@+id/detail_delivery_price"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="20dp"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginBottom="10dp"
-                                android:text="최소주문금액"
+                                android:text=""
                                 android:textColor="@color/black"
                                 android:textSize="12sp"></TextView>
                         </LinearLayout>
@@ -254,7 +254,7 @@
                         android:paddingTop="5dp"
                         android:paddingLeft="5dp"
                         android:paddingRight="5dp"
-                        android:id="@+id/detail_errand_description"
+                        android:id="@+id/detail_delivery_description"
                         android:layout_marginTop="10dp"
                         android:background="#f4f4f4"
                         ></TextView>

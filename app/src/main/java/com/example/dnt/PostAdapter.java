@@ -42,8 +42,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
         holder.deadline_HH.setText(arrayList.get(position).getDeadline_HH());
         holder.deadline_mm.setText(arrayList.get(position).getDeadline_mm());
         holder.pickup.setText(arrayList.get(position).getPickup());
-        holder.errand_price.setText(arrayList.get(position).getPrice());
-        holder.errand_description.setText(arrayList.get(position).getDescription());
+        holder.delivery_price.setText(arrayList.get(position).getPrice());
+        holder.delivery_description.setText(arrayList.get(position).getDescription());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,7 +60,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
     }
 
     public class PostViewHolder extends RecyclerView.ViewHolder {
-        TextView restaurant_name, deadline_HH, deadline_mm, pickup, errand_price, errand_description;
+        TextView restaurant_name, deadline_HH, deadline_mm, pickup, delivery_price, delivery_description;
 
         public PostViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -69,8 +69,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.PostViewHolder
             deadline_HH = (TextView) itemView.findViewById(R.id.deadline_HH);
             deadline_mm = (TextView) itemView.findViewById(R.id.deadline_mm);
             pickup = (TextView) itemView.findViewById(R.id.pickup);
-            errand_description = (TextView) itemView.findViewById(R.id.errand_description);
-            errand_price = (TextView) itemView.findViewById(R.id.errand_price);
+            delivery_description = (TextView) itemView.findViewById(R.id.delivery_description);
+            delivery_price = (TextView) itemView.findViewById(R.id.delivery_price);
         }
     }
 

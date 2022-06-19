@@ -38,6 +38,8 @@
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".ChatActivity"></activity>
         <activity android:name=".ChatBeforeActivity"></activity>
+        <activity android:name=".SearchActivity"></activity>
+        <activity android:name=".EditPostActivity"></activity>
         <!-- 팝업 Activity -->
         <activity android:name=".PopupActivity" android:theme="@style/popupTheme" android:screenOrientation="portrait" />
     </application>

@@ -17,7 +17,7 @@
             >
         </LinearLayout>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/signup_back_btn"
             android:layout_width="28dp"
             android:layout_height="33dp"
@@ -27,7 +27,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/black"></Button>
+            app:tint="@color/black"></androidx.appcompat.widget.AppCompatButton>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

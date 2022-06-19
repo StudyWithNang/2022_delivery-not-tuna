@@ -26,9 +26,9 @@ import java.util.ArrayList;
 
 public class DetailActivity extends AppCompatActivity{
     private DatabaseReference databaseReference;
-    TextView restaurant_name, deadline_HH, deadline_mm, pickup, errand_price, errand_description, signup_nickname;
-    String detail_restaurant_name, detail_deadline_HH, detail_deadline_mm, detail_pickup;
-    Button back, delete_btn, secret_btn, chat_btn;
+    TextView restaurant_name, deadline_HH, deadline_mm, pickup, delivery_price, delivery_description, signup_nickname;
+    String detail_restaurant_name, detail_deadline_HH, detail_deadline_mm, detail_pickup, detail_delivery_price, detail_delivery_description;
+    Button back, delete_btn, secret_btn, chat_btn, detail_edit_btn;
     String userName;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -49,13 +49,22 @@ public class DetailActivity extends AppCompatActivity{
         deadline_HH = findViewById(R.id.detail_deadline_HH);
         deadline_mm = findViewById(R.id.detail_deadline_mm);
         pickup = findViewById(R.id.detail_pickup);
-        errand_price = findViewById(R.id.detail_errand_price);
-        errand_description = findViewById(R.id.detail_errand_description);
+        delivery_price = findViewById(R.id.detail_delivery_price);
+        delivery_description = findViewById(R.id.detail_delivery_description);
+        detail_edit_btn = findViewById(R.id.detail_edit_btn);
         //객체 가져오기
         Intent intent = getIntent();
 
+
         userName = intent.getStringExtra("userName");
-        userName = "alice"; //userName null로 나옴
+        //userName = "alice"; //userName null로 나옴
+
+        detail_restaurant_name = intent.getStringExtra("restaurant_name");
+        detail_deadline_HH = intent.getStringExtra("deadline_HH");
+        detail_deadline_mm = intent.getStringExtra("deadline_mm");
+        detail_pickup = intent.getStringExtra("pickup");
+        detail_delivery_price = intent.getStringExtra("delivery_price");
+        detail_delivery_description = intent.getStringExtra("delivery_description");
 
         secret_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,9 +80,10 @@ public class DetailActivity extends AppCompatActivity{
                         deadline_mm.setText(post.getDeadline_mm());
                         detail_deadline_mm = post.getDeadline_mm();
                         pickup.setText(post.getPickup());
-                        detail_pickup = post.getPickup();
-                        errand_price.setText(post.getPrice());
-                        errand_description.setText(post.getDescription());
+
+                        delivery_price.setText(post.getPrice());
+                        delivery_description.setText(post.getDescription());
+
                         signup_nickname.setText("nh");
                     }
 
@@ -102,6 +112,8 @@ public class DetailActivity extends AppCompatActivity{
         });
 
         back.setOnClickListener(onClickListener);
+        detail_edit_btn.setOnClickListener(onClickListener);
+        delete_btn.setOnClickListener(onClickListener);
     }
     View.OnClickListener onClickListener = new View.OnClickListener() {
         @Override
@@ -111,11 +123,26 @@ public class DetailActivity extends AppCompatActivity{
                     finish();
                     DetailActivity.this.overridePendingTransition(R.anim.enter_from_left, R.anim.exit_to_right);
                     break;
+                case R.id.detail_edit_btn:
+                    Intent intent1 = new Intent(getApplicationContext(), EditPostActivity.class);
+                    startActivity(intent1);
+                    overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
+                    finish();
+                    break;
+                case R.id.detail_delete_btn:
+//                    table_posts.child("restaurant").removeValue();
+//                    table_posts.child("deadline_HH").removeValue();
+//                    table_posts.child("deadline_mm").removeValue();
+//                    table_posts.child("pickup").removeValue();
+//                    table_posts.child("price").removeValue();
+//                    table_posts.child("description").removeValue();
+//                    Toast.makeText(DetailActivity.this, "삭제 완료", Toast.LENGTH_LONG).show();
+                    finish();
+                    break;
             }
         }
     };
 
 
-    public void showTablePosts() {}
 
 }
