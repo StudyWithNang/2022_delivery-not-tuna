@@ -137,6 +137,7 @@ public class DetailActivity extends AppCompatActivity{
                 case R.id.detail_delete_btn:
                     database.getReference().child("posts").child("1").removeValue();
                     Toast.makeText(DetailActivity.this, "삭제 완료", Toast.LENGTH_LONG).show();
+                    DetailActivity.this.overridePendingTransition(R.anim.enter_from_left, R.anim.exit_to_right);
                     finish();
                     break;
             }
