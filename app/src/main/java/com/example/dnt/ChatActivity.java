@@ -33,7 +33,7 @@ public class ChatActivity extends AppCompatActivity {
     ChatAdapter adapter;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    final DatabaseReference table_chats = database.getReference("chats").child("chatroom1");
+    final DatabaseReference table_chats = database.getReference("chats");
 
 
     @Override
@@ -118,4 +118,3 @@ public class ChatActivity extends AppCompatActivity {
 
     }
 }
-
