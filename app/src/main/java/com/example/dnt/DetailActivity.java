@@ -75,7 +75,7 @@ public class DetailActivity extends AppCompatActivity{
                 table_posts.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        PostInfo post = snapshot.child(String.valueOf(postId)).getValue(PostInfo.class);
+                        PostInfo post = snapshot.child("1").getValue(PostInfo.class);
                         writer.setText(post.getWriter());
                         detail_writer = post.getWriter();
                         restaurant_name.setText(post.getRestaurant());
@@ -137,6 +137,7 @@ public class DetailActivity extends AppCompatActivity{
                 case R.id.detail_delete_btn:
                     database.getReference().child("posts").child("1").removeValue();
                     Toast.makeText(DetailActivity.this, "삭제 완료", Toast.LENGTH_LONG).show();
+                    DetailActivity.this.overridePendingTransition(R.anim.enter_from_left, R.anim.exit_to_right);
                     finish();
                     break;
             }
