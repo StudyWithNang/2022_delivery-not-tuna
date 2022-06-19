@@ -29,7 +29,7 @@ public class AddPostActivity extends AppCompatActivity {
 
     Intent intent;
     String userName;
-    EditText restaurant_name, deadline_HH, deadline_mm, pickup, errand_price, errand_description, userId;
+    EditText restaurant_name, deadline_HH, deadline_mm, pickup, delivery_price, delivery_description, userId;
     Button back, post_btn;
     int postId = 1;
 
@@ -54,8 +54,8 @@ public class AddPostActivity extends AppCompatActivity {
         deadline_HH = findViewById(R.id.deadline_HH);
         deadline_mm = findViewById(R.id.deadline_mm);
         pickup = findViewById(R.id.pickup);
-        errand_price = findViewById(R.id.delivery_price);
-        errand_description = findViewById(R.id.delivery_description);
+        delivery_price = findViewById(R.id.delivery_price);
+        delivery_price = findViewById(R.id.delivery_description);
         post_btn = findViewById(R.id.post_btn);
         userId = findViewById(R.id.signup_nickname);
         back = findViewById(R.id.post_back);
@@ -85,8 +85,8 @@ public class AddPostActivity extends AppCompatActivity {
                     String getDeadline_HH = deadline_HH.getText().toString();
                     String getDeadline_mm = deadline_mm.getText().toString();
                     String getPickup = pickup.getText().toString();
-                    String getPrice = errand_price.getText().toString();
-                    String getDescription = errand_description.getText().toString();
+                    String getPrice = delivery_price.getText().toString();
+                    String getDescription = delivery_description.getText().toString();
 
                     //hashmap 만들기
                     HashMap<String, Object> result = new HashMap<>();
@@ -94,8 +94,8 @@ public class AddPostActivity extends AppCompatActivity {
                     result.put("deadline_HH", getDeadline_HH);
                     result.put("deadline_mm", getDeadline_mm);
                     result.put("pickup", getPickup);
-                    result.put("errand_price", getPrice);
-                    result.put("errand_description", getDescription);
+                    result.put("delivery_price", getPrice);
+                    result.put("delivery_description", getDescription);
                     writeNewUser(postId, getRestaurant, getDeadline_HH, getDeadline_mm, getPickup, getPrice, getDescription);
 
                     // 채팅방 만들기
