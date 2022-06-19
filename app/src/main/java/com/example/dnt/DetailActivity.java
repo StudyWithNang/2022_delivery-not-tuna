@@ -43,6 +43,11 @@ public class DetailActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
+        Intent intent = getIntent();
+        userName = ((MainActivity)MainActivity.context_main).userName;
+        Log.w("userName", userName);
+        Toast.makeText(DetailActivity.this, "userName : "+userName, Toast.LENGTH_LONG).show();
+
         //객체 생성
         user_nickname = findViewById(R.id.nickname);
         secret_btn = findViewById(R.id.secret_btn);
@@ -59,8 +64,6 @@ public class DetailActivity extends AppCompatActivity{
         detail_edit_btn = findViewById(R.id.detail_edit_btn);
 
 
-        Intent intent = getIntent();
-        userName = ((MainActivity)MainActivity.context_main).userName;
 
         detail_restaurant_name = intent.getStringExtra("restaurant_name");
         detail_deadline_HH = intent.getStringExtra("deadline_HH");
