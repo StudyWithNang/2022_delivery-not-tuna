@@ -26,8 +26,8 @@ import java.util.ArrayList;
 
 public class DetailActivity extends AppCompatActivity{
     private DatabaseReference databaseReference;
-    TextView restaurant_name, deadline_HH, deadline_mm, pickup, delivery_price, delivery_description, signup_nickname;
-    String detail_restaurant_name, detail_deadline_HH, detail_deadline_mm, detail_pickup, detail_delivery_price, detail_delivery_description;
+    TextView writer, restaurant_name, deadline_HH, deadline_mm, pickup, delivery_price, delivery_description, user_nickname;
+    String detail_writer, detail_restaurant_name, detail_deadline_HH, detail_deadline_mm, detail_pickup, detail_delivery_price, detail_delivery_description;
     Button back, delete_btn, secret_btn, chat_btn, detail_edit_btn;
     String userName;
 
@@ -40,11 +40,12 @@ public class DetailActivity extends AppCompatActivity{
         setContentView(R.layout.activity_detail);
 
         //객체 생성
-        signup_nickname = findViewById(R.id.signup_nickname);
+        user_nickname = findViewById(R.id.nickname);
         secret_btn = findViewById(R.id.secret_btn);
         delete_btn = findViewById(R.id.detail_delete_btn);
         back = findViewById(R.id.detail_back);
         chat_btn = findViewById(R.id.chat_btn);
+        writer = findViewById(R.id.writer);
         restaurant_name = findViewById(R.id.detail_restaurant_name);
         deadline_HH = findViewById(R.id.detail_deadline_HH);
         deadline_mm = findViewById(R.id.detail_deadline_mm);
@@ -52,12 +53,11 @@ public class DetailActivity extends AppCompatActivity{
         delivery_price = findViewById(R.id.detail_delivery_price);
         delivery_description = findViewById(R.id.detail_delivery_description);
         detail_edit_btn = findViewById(R.id.detail_edit_btn);
-        //객체 가져오기
+
+
         Intent intent = getIntent();
+        userName = ((MainActivity)MainActivity.context_main).userName;
 
-
-        userName = intent.getStringExtra("userName");
-        //userName = "alice"; //userName null로 나옴
 
         detail_restaurant_name = intent.getStringExtra("restaurant_name");
         detail_deadline_HH = intent.getStringExtra("deadline_HH");
@@ -73,6 +73,8 @@ public class DetailActivity extends AppCompatActivity{
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         PostInfo post = snapshot.child("1").getValue(PostInfo.class);
+                        writer.setText(post.getWriter());
+                        detail_writer = post.getWriter();
                         restaurant_name.setText(post.getRestaurant());
                         detail_restaurant_name = post.getRestaurant();
                         deadline_HH.setText(post.getDeadline_HH());
@@ -80,11 +82,12 @@ public class DetailActivity extends AppCompatActivity{
                         deadline_mm.setText(post.getDeadline_mm());
                         detail_deadline_mm = post.getDeadline_mm();
                         pickup.setText(post.getPickup());
+                        detail_pickup = post.getPickup();
 
                         delivery_price.setText(post.getPrice());
                         delivery_description.setText(post.getDescription());
 
-                        signup_nickname.setText("nh");
+                        //signup_nickname.setText("nh");
                     }
 
                     @Override
@@ -99,15 +102,14 @@ public class DetailActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 Intent nextIntent = new Intent(DetailActivity.this, ChatBeforeActivity.class);
-                nextIntent.putExtra("userName", userName);
+                nextIntent.putExtra("writer", detail_writer);
                 nextIntent.putExtra("restaurant", detail_restaurant_name);
                 nextIntent.putExtra("HH", detail_deadline_HH);
                 nextIntent.putExtra("mm", detail_deadline_mm);
                 nextIntent.putExtra("pickup", detail_pickup);
 
-
                 startActivity(nextIntent);
-                finish();
+                //finish();
             }
         });
 

@@ -7,6 +7,7 @@ import java.util.Map;
 
 @IgnoreExtraProperties
 public class PostInfo {
+    public String writer;
     public String restaurant;
     public String deadline_HH;
     public String deadline_mm;
@@ -17,7 +18,8 @@ public class PostInfo {
     public PostInfo() {
     }
 
-    public PostInfo(String restaurant, String deadline_HH, String deadline_mm, String pickup, String price, String description) {
+    public PostInfo(String writer, String restaurant, String deadline_HH, String deadline_mm, String pickup, String price, String description) {
+        this.writer = writer;
         this.restaurant = restaurant;
         this.deadline_HH = deadline_HH;
         this.deadline_mm = deadline_mm;
@@ -27,6 +29,13 @@ public class PostInfo {
 
     }
 
+    public String getWriter() {
+        return writer;
+    }
+
+    public void setWriter(String writer) {
+        this.writer = writer;
+    }
 
     public String getRestaurant() {return restaurant;}
 
