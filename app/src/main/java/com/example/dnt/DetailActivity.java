@@ -16,6 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,6 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DetailActivity extends AppCompatActivity{
     private DatabaseReference databaseReference;
@@ -30,6 +33,7 @@ public class DetailActivity extends AppCompatActivity{
     String detail_writer, detail_restaurant_name, detail_deadline_HH, detail_deadline_mm, detail_pickup, detail_delivery_price, detail_delivery_description;
     Button back, delete_btn, secret_btn, chat_btn, detail_edit_btn;
     String userName;
+    int postId;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     final DatabaseReference table_posts = database.getReference("posts");
@@ -58,7 +62,6 @@ public class DetailActivity extends AppCompatActivity{
         Intent intent = getIntent();
         userName = ((MainActivity)MainActivity.context_main).userName;
 
-
         detail_restaurant_name = intent.getStringExtra("restaurant_name");
         detail_deadline_HH = intent.getStringExtra("deadline_HH");
         detail_deadline_mm = intent.getStringExtra("deadline_mm");
@@ -72,7 +75,7 @@ public class DetailActivity extends AppCompatActivity{
                 table_posts.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        PostInfo post = snapshot.child("1").getValue(PostInfo.class);
+                        PostInfo post = snapshot.child(String.valueOf(postId)).getValue(PostInfo.class);
                         writer.setText(post.getWriter());
                         detail_writer = post.getWriter();
                         restaurant_name.setText(post.getRestaurant());
@@ -132,19 +135,12 @@ public class DetailActivity extends AppCompatActivity{
                     finish();
                     break;
                 case R.id.detail_delete_btn:
-//                    table_posts.child("restaurant").removeValue();
-//                    table_posts.child("deadline_HH").removeValue();
-//                    table_posts.child("deadline_mm").removeValue();
-//                    table_posts.child("pickup").removeValue();
-//                    table_posts.child("price").removeValue();
-//                    table_posts.child("description").removeValue();
-//                    Toast.makeText(DetailActivity.this, "삭제 완료", Toast.LENGTH_LONG).show();
+                    database.getReference().child("posts").child("1").removeValue();
+                    Toast.makeText(DetailActivity.this, "삭제 완료", Toast.LENGTH_LONG).show();
                     finish();
                     break;
             }
         }
     };
-
-
-
+    
 }
