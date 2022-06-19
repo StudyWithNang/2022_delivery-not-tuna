@@ -96,10 +96,10 @@ public class AddPostActivity extends AppCompatActivity {
                     result.put("pickup", getPickup);
                     result.put("price", getPrice);
                     result.put("description", getDescription);
-                    writeNewUser(postId, getRestaurant, getDeadline_HH, getDeadline_mm, getPickup, getPrice, getDescription);
+                    writeNewUser(writer, getRestaurant, getDeadline_HH, getDeadline_mm, getPickup, getPrice, getDescription);
 
                     // 채팅방 만들기
-                    writeNewChat(postId, userName, 1);
+                    writeNewChat(1, userName, 1);
 
                     postId++;
                     break;
@@ -107,12 +107,12 @@ public class AddPostActivity extends AppCompatActivity {
         }
     };
 
-    private void writeNewUser(int postId, String restaurant, String deadline_HH, String deadline_mm, String pickup, String price, String description) {
+    private void writeNewUser(String writer, String restaurant, String deadline_HH, String deadline_mm, String pickup, String price, String description) {
 
         String key = mDatabase.child("posts").push().getKey();
-        PostInfo post = new PostInfo(userName, restaurant, deadline_HH, deadline_mm, pickup, price, description);
+        PostInfo post = new PostInfo(writer, restaurant, deadline_HH, deadline_mm, pickup, price, description);
 
-        mDatabase.child("posts").child(String.valueOf(postId)).setValue(post) //db에 순차적으로 posts - 1 - email, name, pw 들어감
+        mDatabase.child("posts").child("1").setValue(post) //db에 순차적으로 posts - 1 - email, name, pw 들어감
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
@@ -157,7 +157,7 @@ public class AddPostActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Toast.makeText(AddPostActivity.this, "table_chats!", Toast.LENGTH_SHORT).show();
-                ChatInfo chat = snapshot.child("chatroom1").getValue(ChatInfo.class);
+                MessageItem chat = snapshot.child("chatroom1").getValue(MessageItem.class);
 
                 Map<String, Object> mapChat = new HashMap<String, Object>();
                 mapChat.put("users", count);
@@ -196,8 +196,8 @@ public class AddPostActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 // Get Post object and use the values to update the UI
-                if(dataSnapshot.getValue(ChatInfo.class) != null){
-                    ChatInfo chat = dataSnapshot.getValue(ChatInfo.class);
+                if(dataSnapshot.getValue(MessageItem.class) != null){
+                    MessageItem chat = dataSnapshot.getValue(MessageItem.class);
                     Log.w("FireBaseData", "getData" + chat.toString());
                 } else {
                     Toast.makeText(AddPostActivity.this, "데이터 없음...", Toast.LENGTH_SHORT).show();

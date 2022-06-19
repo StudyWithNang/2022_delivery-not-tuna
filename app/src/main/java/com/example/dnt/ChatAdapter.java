@@ -1,34 +1,35 @@
 package com.example.dnt;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ChatAdapter extends BaseAdapter {
-    ArrayList<ChatInfo> chatInfos;
+    ArrayList<MessageItem> messageItems;
     LayoutInflater layoutInflater;
-    String userName = "alice"; //activity -> adapter로 데이터 가져오기?
 
-    //String userName = ((ChatActivity)ChatActivity.mContext).userName;
+    String userName = ((MainActivity)MainActivity.context_main).userName;
 
-    public ChatAdapter(ArrayList<ChatInfo> chatInfos, LayoutInflater layoutInflater) {
-        this.chatInfos = chatInfos;
+    public ChatAdapter(ArrayList<MessageItem> chatInfos, LayoutInflater layoutInflater) {
+        this.messageItems = chatInfos;
         this.layoutInflater = layoutInflater;
     }
 
     @Override
     public int getCount() {
-        return chatInfos.size();
+        return messageItems.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return chatInfos.get(position);
+        return messageItems.get(position);
     }
 
     @Override
@@ -40,17 +41,16 @@ public class ChatAdapter extends BaseAdapter {
     public View getView(int position, View view, ViewGroup viewGroup) {
 
         //현재 보여줄 번째의(position)의 데이터로 뷰를 생성
-        ChatInfo item = chatInfos.get(position);
+        MessageItem item = messageItems.get(position);
 
-        //재활용할 뷰는 사용하지 않음!!
         View itemView = null;
 
+        Log.w("messageItem", "userName:" + userName + " -- item Name: " + item.getUserName());
 
         //메세지가 내 메세지인지??
-        if(userName == "alice") {
-        //if(item.getUsers().equals(userName)){
+        if (item.getUserName().equals(userName)){
             itemView= layoutInflater.inflate(R.layout.msgbox_my,viewGroup,false);
-        }else{
+        } else {
             itemView= layoutInflater.inflate(R.layout.msgbox_other,viewGroup,false);
         }
 
@@ -59,7 +59,6 @@ public class ChatAdapter extends BaseAdapter {
         TextView name= itemView.findViewById(R.id.name);
         TextView msg= itemView.findViewById(R.id.msg);
         TextView time= itemView.findViewById(R.id.time);
-
 
         name.setText(item.getUserName());
         msg.setText(item.getMessage());
