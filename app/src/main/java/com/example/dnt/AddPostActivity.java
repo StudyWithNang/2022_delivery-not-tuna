@@ -174,7 +174,7 @@ public class AddPostActivity extends AppCompatActivity {
         table_users.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Toast.makeText(AddPostActivity.this, "table_users!", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(AddPostActivity.this, "table_users!", Toast.LENGTH_SHORT).show();
                 UserInfo user = snapshot.child(userName).getValue(UserInfo.class);
 
                 Map<String, Object> mapUser = new HashMap<String, Object>();
