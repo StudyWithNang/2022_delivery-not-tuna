@@ -29,7 +29,7 @@ public class AddPostActivity extends AppCompatActivity {
 
     Intent intent;
     String userName;
-    EditText restaurant_name, deadline_HH, deadline_mm, pickup, delivery_price, delivery_description, userId;
+    EditText restaurant_name, deadline_HH, deadline_mm, pickup, price, description, userId;
     Button back, post_btn;
     int postId = 1;
 
@@ -46,16 +46,15 @@ public class AddPostActivity extends AppCompatActivity {
         setContentView(R.layout.activity_addpost);
 
         Intent intent = getIntent();
-        //userName = intent.getStringExtra("userName");
-        userName = "alice";
-        //Toast.makeText(AddPostActivity.this, "저장을 완료했습니다."+userName, Toast.LENGTH_SHORT).show();
+        userName = ((MainActivity)MainActivity.context_main).userName;
 
         restaurant_name = findViewById(R.id.restaurant_name);
         deadline_HH = findViewById(R.id.deadline_HH);
         deadline_mm = findViewById(R.id.deadline_mm);
         pickup = findViewById(R.id.pickup);
-        delivery_price = findViewById(R.id.delivery_price);
-        delivery_price = findViewById(R.id.delivery_description);
+        price = findViewById(R.id.delivery_price);
+        description = findViewById(R.id.delivery_description);
+
         post_btn = findViewById(R.id.post_btn);
         userId = findViewById(R.id.signup_nickname);
         back = findViewById(R.id.post_back);
@@ -85,8 +84,9 @@ public class AddPostActivity extends AppCompatActivity {
                     String getDeadline_HH = deadline_HH.getText().toString();
                     String getDeadline_mm = deadline_mm.getText().toString();
                     String getPickup = pickup.getText().toString();
-                    String getPrice = delivery_price.getText().toString();
-                    String getDescription = delivery_description.getText().toString();
+                    String getPrice = price.getText().toString();
+                    String getDescription = description.getText().toString();
+                    String writer = userName;
 
                     //hashmap 만들기
                     HashMap<String, Object> result = new HashMap<>();
@@ -94,8 +94,8 @@ public class AddPostActivity extends AppCompatActivity {
                     result.put("deadline_HH", getDeadline_HH);
                     result.put("deadline_mm", getDeadline_mm);
                     result.put("pickup", getPickup);
-                    result.put("delivery_price", getPrice);
-                    result.put("delivery_description", getDescription);
+                    result.put("price", getPrice);
+                    result.put("description", getDescription);
                     writeNewUser(postId, getRestaurant, getDeadline_HH, getDeadline_mm, getPickup, getPrice, getDescription);
 
                     // 채팅방 만들기
@@ -110,7 +110,7 @@ public class AddPostActivity extends AppCompatActivity {
     private void writeNewUser(int postId, String restaurant, String deadline_HH, String deadline_mm, String pickup, String price, String description) {
 
         String key = mDatabase.child("posts").push().getKey();
-        PostInfo post = new PostInfo(restaurant, deadline_HH, deadline_mm, pickup, price, description);
+        PostInfo post = new PostInfo(userName, restaurant, deadline_HH, deadline_mm, pickup, price, description);
 
         mDatabase.child("posts").child(String.valueOf(postId)).setValue(post) //db에 순차적으로 posts - 1 - email, name, pw 들어감
                 .addOnSuccessListener(new OnSuccessListener<Void>() {

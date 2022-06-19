@@ -1,5 +1,6 @@
 package com.example.dnt;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,13 +25,18 @@ import com.google.android.material.navigation.NavigationBarView;
 public class MainActivity extends AppCompatActivity {
     FragmentManager fragmentManager = getSupportFragmentManager();
     homeFragment homeFragment = new homeFragment();
+    String userName;
+
+    public static Context context_main;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Intent intent = getIntent();
-        String userName = intent.getStringExtra("userName");
+        userName = intent.getStringExtra("userName");
+
+        context_main = this;
 
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.framelayout, homeFragment).commitAllowingStateLoss();
