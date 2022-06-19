@@ -5,6 +5,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +16,10 @@ public class PopupActivity extends AppCompatActivity {
 
     Button mOnClose;
     TextView txtText;
+    String rand_txt;
+    int[] images = new int[] {R.drawable.food_rice, R.drawable.food_jajangmyeon,
+            R.drawable.food_sushi,R.drawable.food_pasta, R.drawable.food_chicken,
+            R.drawable.food_hamburger,R.drawable.food_tteokbokki, R.drawable.food_coffee};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +35,10 @@ public class PopupActivity extends AppCompatActivity {
         Random random = new Random();
         int n = random.nextInt(randomTxt.length-1);
         txtText.setText(randomTxt[n]);
+
+        ImageView mImageView = (ImageView)findViewById(R.id.Ranimg);
+        mImageView.setBackgroundResource(images[n]);
+
 
     }
 
