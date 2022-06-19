@@ -157,7 +157,7 @@ public class AddPostActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Toast.makeText(AddPostActivity.this, "table_chats!", Toast.LENGTH_SHORT).show();
-                ChatInfo chat = snapshot.child("chatroom1").getValue(ChatInfo.class);
+                MessageItem chat = snapshot.child("chatroom1").getValue(MessageItem.class);
 
                 Map<String, Object> mapChat = new HashMap<String, Object>();
                 mapChat.put("users", count);
@@ -174,7 +174,7 @@ public class AddPostActivity extends AppCompatActivity {
         table_users.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Toast.makeText(AddPostActivity.this, "table_users!", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(AddPostActivity.this, "table_users!", Toast.LENGTH_SHORT).show();
                 UserInfo user = snapshot.child(userName).getValue(UserInfo.class);
 
                 Map<String, Object> mapUser = new HashMap<String, Object>();
@@ -196,8 +196,8 @@ public class AddPostActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 // Get Post object and use the values to update the UI
-                if(dataSnapshot.getValue(ChatInfo.class) != null){
-                    ChatInfo chat = dataSnapshot.getValue(ChatInfo.class);
+                if(dataSnapshot.getValue(MessageItem.class) != null){
+                    MessageItem chat = dataSnapshot.getValue(MessageItem.class);
                     Log.w("FireBaseData", "getData" + chat.toString());
                 } else {
                     Toast.makeText(AddPostActivity.this, "데이터 없음...", Toast.LENGTH_SHORT).show();
