@@ -54,6 +54,7 @@ public class AddPostActivity extends AppCompatActivity {
         pickup = findViewById(R.id.pickup);
         price = findViewById(R.id.delivery_price);
         description = findViewById(R.id.delivery_description);
+
         post_btn = findViewById(R.id.post_btn);
         userId = findViewById(R.id.signup_nickname);
         back = findViewById(R.id.post_back);

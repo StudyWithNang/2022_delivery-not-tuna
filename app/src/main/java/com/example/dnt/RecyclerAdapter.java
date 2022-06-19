@@ -66,8 +66,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 intent.putExtra("deadline_HH", String.valueOf(holder.deadline_HH));
                 intent.putExtra("deadline_mm", String.valueOf(holder.deadline_mm));
                 intent.putExtra("pickup", String.valueOf(holder.pickup));
-                intent.putExtra("errand_price", String.valueOf(holder.delivery_price));
-                intent.putExtra("errand_description", String.valueOf(holder.delivery_description));
+                intent.putExtra("delivery_price", String.valueOf(holder.delivery_price));
+                intent.putExtra("delivery_description", String.valueOf(holder.delivery_description));
                 ContextCompat.startActivity(holder.itemView.getContext(), intent, null);
                 ((MainActivity)holder.itemView.getContext()).overridePendingTransition(R.anim.enter_from_right, R.anim.enter_from_left);
             }
