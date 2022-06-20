@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -40,6 +41,9 @@ public class EditPostActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editpost);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         back = findViewById(R.id.editPost_back);
         restaurant_name = findViewById(R.id.editPost_restaurant_name);
         deadline_HH = findViewById(R.id.editPost_deadline_HH);
@@ -87,7 +91,7 @@ public class EditPostActivity extends AppCompatActivity {
     };
     // 비밀번호 변경하는 함수
     public void ChangePost(String new_restaurant, String new_HH, String new_mm,
-            String new_pickup, String new_price, String new_description){
+                           String new_pickup, String new_price, String new_description){
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("restaurant", new_restaurant);
         map.put("deadline_HH", new_HH);

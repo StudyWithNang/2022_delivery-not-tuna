@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -44,6 +45,8 @@ public class AddPostActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addpost);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         Intent intent = getIntent();
         userName = ((MainActivity)MainActivity.context_main).userName;
@@ -96,7 +99,7 @@ public class AddPostActivity extends AppCompatActivity {
                     result.put("pickup", getPickup);
                     result.put("price", getPrice);
                     result.put("description", getDescription);
-                    writeNewUser(postId, getRestaurant, getDeadline_HH, getDeadline_mm, getPickup, getPrice, getDescription);
+                    writeNewUser(writer, getRestaurant, getDeadline_HH, getDeadline_mm, getPickup, getPrice, getDescription);
 
                     // 채팅방 만들기
                     writeNewChat(postId, userName, 1);
@@ -107,10 +110,10 @@ public class AddPostActivity extends AppCompatActivity {
         }
     };
 
-    private void writeNewUser(int postId, String restaurant, String deadline_HH, String deadline_mm, String pickup, String price, String description) {
+    private void writeNewUser(String writer, String restaurant, String deadline_HH, String deadline_mm, String pickup, String price, String description) {
 
         String key = mDatabase.child("posts").push().getKey();
-        PostInfo post = new PostInfo(userName, restaurant, deadline_HH, deadline_mm, pickup, price, description);
+        PostInfo post = new PostInfo(writer, restaurant, deadline_HH, deadline_mm, pickup, price, description);
 
         mDatabase.child("posts").child(String.valueOf(postId)).setValue(post) //db에 순차적으로 posts - 1 - email, name, pw 들어감
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
