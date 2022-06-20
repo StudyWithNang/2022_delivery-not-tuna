@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/drawable/back_et_msgboxmy.xml" value="0.2465" />
+        <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/drawable/back_et_msgboxother.xml" value="0.2465" />
+        <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/drawable/back_et_name.xml" value="0.2455" />
         <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/drawable/edittext_border.xml" value="0.1945" />
+        <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/drawable/et_name_cursor.xml" value="0.2465" />
         <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/drawable/ic_baseline_add_circle_60.xml" value="0.1375" />
         <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.1955" />
         <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.1675" />
@@ -20,18 +24,17 @@
         <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/drawable/textview_bottom_border.xml" value="0.1945" />
         <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/layout/CheckableLinearLayout.xml" value="0.3651041666666667" />
         <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/layout/activity_addpost.xml" value="0.36614583333333334" />
-<<<<<<< HEAD
-=======
         <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/layout/activity_before_chat.xml" value="0.1" />
->>>>>>> origin/main
         <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/layout/activity_change_pw.xml" value="0.22" />
+        <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/layout/activity_chat.xml" value="0.25" />
         <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/layout/activity_detail.xml" value="0.3148148148148148" />
         <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/layout/activity_favorite.xml" value="0.33" />
         <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/layout/activity_home.xml" value="0.22" />
         <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/layout/activity_list.xml" value="0.1" />
         <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/layout/activity_login.xml" value="0.25" />
-        <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/layout/activity_modify_profile.xml" value="0.18" />
+        <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/layout/activity_mychat.xml" value="0.240625" />
         <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/layout/activity_mypage.xml" value="0.25" />
         <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/layout/activity_profile.xml" value="0.26197916666666665" />
         <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
@@ -44,6 +47,8 @@
         <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/layout/fragment_modifying_profile.xml" value="0.25" />
         <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/layout/fragment_mypage.xml" value="0.1" />
         <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/layout/item_post.xml" value="0.24427083333333333" />
+        <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/layout/msgbox_my.xml" value="0.23958333333333334" />
+        <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/layout/msgbox_other.xml" value="0.25" />
         <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/layout/person.xml" value="0.24114583333333334" />
         <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/layout/popup_activity.xml" value="0.25625" />
         <entry key="..\:/2022_delivery-not-tuna/app/src/main/res/layout/post_item.xml" value="0.3619791666666667" />
@@ -54,20 +59,12 @@
         <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.2405" />
         <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.1" />
         <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/drawable/menu_selector_color.xml" value="0.1" />
-        <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/drawable/splash_base.xml" value="0.298" />
         <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/drawable/textview_bottom_border.xml" value="0.1" />
         <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/drawable/underline.xml" value="0.1" />
         <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/layout/activity_addpost.xml" value="0.22" />
         <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/layout/activity_backward.xml" value="0.23233695652173914" />
-        <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/layout/activity_before_chat.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/layout/activity_change_pw.xml" value="0.26458333333333334" />
-<<<<<<< HEAD
-        <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/layout/activity_chat.xml" value="0.36614583333333334" />
-        <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/layout/activity_detail.xml" value="0.25" />
-        <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/layout/activity_editpost.xml" value="0.3037974683544304" />
-=======
         <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/layout/activity_detail.xml" value="0.1" />
->>>>>>> origin/main
         <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/layout/activity_favorite.xml" value="0.26458333333333334" />
         <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/layout/activity_list.xml" value="0.27219202898550726" />
         <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/layout/activity_login.xml" value="0.22" />
@@ -77,12 +74,6 @@
         <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/layout/custom_comment.xml" value="0.2786458333333333" />
         <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/layout/frag_like.xml" value="0.19230769230769232" />
         <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/layout/fragment_home.xml" value="0.1" />
-<<<<<<< HEAD
-        <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/layout/item_post.xml" value="0.2753623188405797" />
-        <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/layout/msgbox_my.xml" value="0.36614583333333334" />
-        <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/layout/msgbox_other.xml" value="0.36614583333333334" />
-=======
->>>>>>> origin/main
         <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/layout/popup_activity.xml" value="0.25" />
         <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/layout/post_item.xml" value="0.1" />
         <entry key="..\:/Users/nahyeon/AndroidStudioProjects/2022_delivery-not-tuna/app/src/main/res/layout/postlist_item.xml" value="0.1" />

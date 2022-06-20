@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,6 +17,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -23,6 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DetailActivity extends AppCompatActivity{
     private DatabaseReference databaseReference;
@@ -30,6 +34,7 @@ public class DetailActivity extends AppCompatActivity{
     String detail_writer, detail_restaurant_name, detail_deadline_HH, detail_deadline_mm, detail_pickup, detail_delivery_price, detail_delivery_description;
     Button back, delete_btn, secret_btn, chat_btn, detail_edit_btn;
     String userName;
+    int postId;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     final DatabaseReference table_posts = database.getReference("posts");
@@ -38,6 +43,8 @@ public class DetailActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         //객체 생성
         user_nickname = findViewById(R.id.nickname);
@@ -57,7 +64,6 @@ public class DetailActivity extends AppCompatActivity{
 
         Intent intent = getIntent();
         userName = ((MainActivity)MainActivity.context_main).userName;
-
 
         detail_restaurant_name = intent.getStringExtra("restaurant_name");
         detail_deadline_HH = intent.getStringExtra("deadline_HH");
@@ -132,19 +138,13 @@ public class DetailActivity extends AppCompatActivity{
                     finish();
                     break;
                 case R.id.detail_delete_btn:
-//                    table_posts.child("restaurant").removeValue();
-//                    table_posts.child("deadline_HH").removeValue();
-//                    table_posts.child("deadline_mm").removeValue();
-//                    table_posts.child("pickup").removeValue();
-//                    table_posts.child("price").removeValue();
-//                    table_posts.child("description").removeValue();
-//                    Toast.makeText(DetailActivity.this, "삭제 완료", Toast.LENGTH_LONG).show();
+                    database.getReference().child("posts").child("1").removeValue();
+                    Toast.makeText(DetailActivity.this, "삭제 완료", Toast.LENGTH_LONG).show();
+                    DetailActivity.this.overridePendingTransition(R.anim.enter_from_left, R.anim.exit_to_right);
                     finish();
                     break;
             }
         }
     };
-
-
 
 }
