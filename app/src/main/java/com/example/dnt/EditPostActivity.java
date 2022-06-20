@@ -42,8 +42,6 @@ public class EditPostActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editpost);
 
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         back = findViewById(R.id.editPost_back);
         restaurant_name = findViewById(R.id.editPost_restaurant_name);
         deadline_HH = findViewById(R.id.editPost_deadline_HH);

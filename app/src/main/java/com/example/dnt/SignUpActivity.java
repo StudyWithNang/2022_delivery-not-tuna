@@ -37,8 +37,6 @@ public class SignUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         signup_email = findViewById(R.id.signup_email);
         signup_nickname = findViewById(R.id.signup_nickname);
         signup_password = findViewById(R.id.signup_password);

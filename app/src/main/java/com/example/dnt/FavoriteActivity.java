@@ -28,8 +28,6 @@ public class FavoriteActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_favorite);
 
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
         signup_btn = findViewById(R.id.signup_btn);

@@ -34,8 +34,6 @@ public class ModifyProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modify_profile);
 
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         Intent intent = getIntent();
         userName = intent.getStringExtra("userName");
 

@@ -44,9 +44,6 @@ public class DetailActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         Intent intent = getIntent();
         userName = ((MainActivity)MainActivity.context_main).userName;
         Log.w("userName", userName);

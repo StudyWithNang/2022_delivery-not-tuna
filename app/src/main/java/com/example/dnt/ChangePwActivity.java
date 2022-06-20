@@ -34,8 +34,6 @@ public class ChangePwActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_pw);
 
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         nickname = findViewById(R.id.nickname);
         email = findViewById(R.id.email);
         new_password = findViewById(R.id.new_password);

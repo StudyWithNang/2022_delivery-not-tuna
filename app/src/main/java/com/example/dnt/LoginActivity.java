@@ -33,8 +33,6 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         login_nickname = findViewById(R.id.login_nickname);
         login_email = findViewById(R.id.login_email);
         login_password = findViewById(R.id.login_password);

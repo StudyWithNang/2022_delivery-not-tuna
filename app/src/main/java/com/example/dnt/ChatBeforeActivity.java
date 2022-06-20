@@ -31,8 +31,6 @@ public class ChatBeforeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_before_chat);
 
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
         detail_info = findViewById(R.id.detail_info);
         enter_btn = findViewById(R.id.enter_btn);
 

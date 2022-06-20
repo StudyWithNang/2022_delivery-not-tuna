@@ -52,9 +52,6 @@ public class MypageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mypage);
 
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-
         //FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         //fragmentTransaction.replace(R.id.framelayout, homeFragment).commitAllowingStateLoss();
         Intent intent = getIntent();
