@@ -102,7 +102,7 @@ public class AddPostActivity extends AppCompatActivity {
                     writeNewUser(writer, getRestaurant, getDeadline_HH, getDeadline_mm, getPickup, getPrice, getDescription);
 
                     // 채팅방 만들기
-                    writeNewChat(postId, userName, 1);
+                    writeNewChat(1, userName, 1);
 
                     postId++;
                     break;
@@ -115,7 +115,7 @@ public class AddPostActivity extends AppCompatActivity {
         String key = mDatabase.child("posts").push().getKey();
         PostInfo post = new PostInfo(writer, restaurant, deadline_HH, deadline_mm, pickup, price, description);
 
-        mDatabase.child("posts").child(String.valueOf(postId)).setValue(post) //db에 순차적으로 posts - 1 - email, name, pw 들어감
+        mDatabase.child("posts").child("1").setValue(post) //db에 순차적으로 posts - 1 - email, name, pw 들어감
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
