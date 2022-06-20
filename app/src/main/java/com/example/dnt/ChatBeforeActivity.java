@@ -3,6 +3,7 @@ package com.example.dnt;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,6 +31,8 @@ public class ChatBeforeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_before_chat);
 
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         detail_info = findViewById(R.id.detail_info);
         enter_btn = findViewById(R.id.enter_btn);
 
@@ -46,9 +49,9 @@ public class ChatBeforeActivity extends AppCompatActivity {
 
         // 주문 정보 화면에 표시
         String info = "주문자 : "+ detail_writer
-                        + "\n가게 이름 : " + detail_restaurant_name
-                        + "\n주문 시간 : " + detail_deadline_HH + "시 " + detail_deadline_mm + "분"
-                        + "\n픽업 장소 : " + detail_pickup;
+                + "\n가게 이름 : " + detail_restaurant_name
+                + "\n주문 시간 : " + detail_deadline_HH + "시 " + detail_deadline_mm + "분"
+                + "\n픽업 장소 : " + detail_pickup;
         detail_info.setText(info);
 
         // 상단의 뒤로가기 버튼 누르면 Detail 화면으로 전환
